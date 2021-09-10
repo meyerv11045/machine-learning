@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/reinforcement_learning/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Reinforcement Learning - ML Notebook</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">ML Notebook</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Random <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../map/" class="dropdown-item">Map of ML</a>
+</li>
+                                    
+<li>
+    <a href="../activation_functions/" class="dropdown-item">Activation Functions</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Reinforcement Learning</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../activation_functions/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#core-concepts" class="nav-link">Core Concepts:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#rewards" class="nav-link">Rewards</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#values" class="nav-link">Values</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#actions" class="nav-link">Actions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#action-values" class="nav-link">Action Values</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#agent-components" class="nav-link">Agent Components</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#state" class="nav-link">State</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#markov-decision-processes" class="nav-link">Markov Decision Processes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#policy" class="nav-link">Policy</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#value-function" class="nav-link">Value Function:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<p><strong>Reinforcement Learning</strong>- the science of learning to make decisions from interaction</p>
+<ul>
+<li>Differs from other machine learning paradigms in that:</li>
+<li>No supervision, only a reward signal</li>
+<li>Feedback can be delayed, not instantaneous</li>
+<li>Time matters</li>
+<li>Earlier decisions affect later interactions</li>
+<li>Sequential decision problems can be solved w/ RL</li>
+<li>RL is a framework for how to think about these problems as well as a set of algorithms that can be used to solved these problems </li>
+</ul>
+<h2 id="core-concepts">Core Concepts:</h2>
+<ol>
+<li><strong>Environment</strong></li>
+<li><strong>Reward</strong> Signal</li>
+<li>External to the learning algorithm even if its internal to the learning system as a whole</li>
+<li><strong>Agent</strong> containing:</li>
+<li>Agent state</li>
+<li>Policy</li>
+<li>Value function (probably)</li>
+<li>Model (optionally)</li>
+</ol>
+<h2 id="rewards">Rewards</h2>
+<ul>
+<li>A reward <script type="math/tex">R_t</script> is a scalar feedback signal</li>
+<li>Indicates how well agent is doing at step <em>t</em></li>
+<li>The agent's job is to <em>maximize cumulative reward</em></li>
+<li>
+<script type="math/tex">G_t = R_{t+1} + R_{t+2} + ...</script>
+</li>
+<li>RL is based on the <strong>reward hypothesis</strong></li>
+<li><em>Any goal can be formalized as the outcome of maximizing a cumulative reward</em></li>
+<li>Dense- reward on every step</li>
+<li>Sparse- reward only when the desired event happens</li>
+<li>Can be negative or positive rewads (Carrot vs. Stick in helping train the algorithm)</li>
+</ul>
+<h2 id="values">Values</h2>
+<ul>
+<li><strong>Value</strong>- the expected cumulative reward from state <script type="math/tex">s</script>
+</li>
+<li>States use the v function to find their value</li>
+<li>
+<script type="math/tex">v(s) = E[G_t | S_t = s]</script> where <script type="math/tex">G_t = R_{t+1} + R_{t+2} + ...</script>
+</li>
+<li>Goal is to <strong>maximize value</strong> by picking suitable actions</li>
+<li>Rewards and values define <strong>desirability</strong> of state or acton</li>
+<li>Returns and values can be defined recursively </li>
+<li>
+<script type="math/tex">G_t = R_{t+1} + G_{t+1}</script>
+</li>
+</ul>
+<h2 id="actions">Actions</h2>
+<ul>
+<li>Goal: Select actions to maximize value</li>
+<li>Actions may have long term consequences meaning rewards may be delayed</li>
+<li>Might be better to sacrific immediate reward to gain more long-term reward</li>
+<li>Ex:</li>
+<li>Financial investments might take months to mature</li>
+<li>Blocking opponent moves might help winning chances many moves in the future</li>
+<li><strong>Policy</strong>- a mapping from states to actions</li>
+</ul>
+<h2 id="action-values">Action Values</h2>
+<ul>
+<li>It is possible to condition the value on <em>actions</em></li>
+<li>
+<script type="math/tex">q(s,a) = E[G_t | S_t = s, A_t = a]</script>
+</li>
+<li>State action pairs use the Q-function to find their value</li>
+</ul>
+<h2 id="agent-components">Agent Components</h2>
+<ul>
+<li>Agent State</li>
+<li>Policy</li>
+<li>Value Function</li>
+<li>Model</li>
+</ul>
+<h2 id="state">State</h2>
+<ul>
+<li>Actions depend on the state of the agent</li>
+<li>Both agent and environment may have an internal state</li>
+<li>In the simplest case, there is only one shared state by the environemnt and agent </li>
+<li>Often there are multiple (sometimes infinite) different states</li>
+<li>The agent's state is usually different than the environment's state</li>
+<li>The agent might not know the full state of the environment</li>
+</ul>
+<h3 id="environment-state">Environment State</h3>
+<ul>
+<li>The environment's internal state</li>
+<li>Usually not visible to the agent</li>
+<li>May contain lots of irrelevant information if visible</li>
+</ul>
+<h3 id="agent-state">Agent State</h3>
+<ul>
+<li>A <strong>history</strong> is a sequence of observations, action, rewards</li>
+<li>
+<script type="math/tex">H_t = O_0,A_0,R_1,O_1,...,O_{t-1},A_{t-1},R_t,O_t</script>
+</li>
+<li>The agent state <script type="math/tex">S_t</script> can be constructed from the history and is considerd to be a function of the history</li>
+<li>
+<script type="math/tex">S_{t+1} = f(S_t,A_t,R_{t+1},O_{t+1})</script> where <script type="math/tex">f</script> is a state update function</li>
+<li>Means the next agent state is dependent on the current agent state, the action taken, the reward, and the observation</li>
+<li>A simple update function can be concatinating the previous states together to create the current state (Done w/ the Atari game agents by cocatenating frames together since frames are the state)</li>
+<li>Actions depend on this state</li>
+<li>Agent state is typically much smaller than the environment state and the full history</li>
+</ul>
+<h3 id="fully-observable-environments">Fully Observable Environments</h3>
+<ul>
+<li>When the agent sees the full environment state</li>
+<li>observation = environment state</li>
+<li>Agent state could just be the observation</li>
+<li>
+<script type="math/tex">S_t = O_t = environment state</script>
+</li>
+<li>Then the agent is in a <em>Markov Decision Process</em></li>
+<li>Ex: </li>
+<li>Single player board games in which the player can see the entire board </li>
+<li>Smart Pong is an example of fully observable environment (VERIFY)</li>
+</ul>
+<h2 id="markov-decision-processes">Markov Decision Processes</h2>
+<ul>
+<li>MDPs provide a useful mathematical framework for talking about many RL topics </li>
+<li>Easier to reason about than the full problem (long markovian)</li>
+<li>Limited b/c of markov assumption</li>
+<li>Def- A decision process is Markov if the future is independent of the past given the present </li>
+<li>
+<script type="math/tex">H_t => S_t => H_{t+1}</script>
+</li>
+<li>Once the current state (<script type="math/tex">S_t</script>) is known , the history (<script type="math/tex">H_t</script>) may be thrown away (useful for space consideration)</li>
+<li>The current state gives enough information for the next state to be predicted</li>
+<li>The environment state is typically Markov</li>
+<li>The history is Markov </li>
+</ul>
+<h3 id="partially-observable-environments">Partially Observable Environments</h3>
+<ul>
+<li>The agent gets parial information</li>
+<li>A robot w/ camera vision doesn't have its absolute location</li>
+<li>A poker playing agent only observes public cards</li>
+<li>Now the observation is not Markov </li>
+<li>Formally this is a <em>partially observable Markov decision process</em> (POMDP)</li>
+<li>The environment state can still be markov, but the agent does not know it</li>
+<li>The state should contain enough information for good policies/value predictions</li>
+</ul>
+<h2 id="policy">Policy</h2>
+<ul>
+<li>Defines the agent's behavior</li>
+<li>A map from agent state to action</li>
+<li><em>Deterministic Policy</em>- function that outputs an action based on an input agent state</li>
+<li><em>Stochastic Policy</em>- a probability of selecting each action in each state</li>
+</ul>
+<h2 id="value-function">Value Function:</h2>
+<ul>
+<li>The actual value function is the expected return</li>
+</ul>
+<p>
+<script type="math/tex">V_\pi(s)=E[G_t|S_t=s,\pi]</script>
+</p>
+<p>​     <script type="math/tex"> = E[R_{t+1}+\gamma R_{t+2}+\gamma^2R_{t+3}+... | S_t = s,\pi]</script>
+</p>
+<ul>
+<li>
+<p>The return has a recursive form since <script type="math/tex">G_t = R_{t+1}+\gamma G_{t+1}</script>
+</p>
+</li>
+<li>
+<p><em>Bellman Equation</em>: <script type="math/tex">V_\pi (s) = E[R_{t+1} + \gamma G_{t+1} | S_t = s,A_t \sim \pi (s)]</script> where <script type="math/tex">a \sim \pi (s)</script> means action <script type="math/tex">a</script> is chosen by policy <script type="math/tex">\pi</script> in state <script type="math/tex">s</script>
+</p>
+</li>
+<li>
+<p><em>Discount Factor</em> (<script type="math/tex">\gamma \in [0,1]</script>) trades off importance of immediate vs. long-term rewards</p>
+</li>
+<li>
+<p>Closer to 1 means higher importane on immediate rewards (AKA discounting future rewards in favor of immediate rewards)</p>
+</li>
+<li>
+<p>The value depends on the policy</p>
+</li>
+<li>
+<p>Can be used to evaluate desirability of states</p>
+</li>
+<li>
+<p>Can be used to select btw actions</p>
+</li>
+<li></li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

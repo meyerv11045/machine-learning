@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/</loc>
+         <lastmod>2021-09-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/machine_learning/activation_functions/</loc>
+         <lastmod>2021-09-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/machine_learning/map/</loc>
+         <lastmod>2021-09-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/machine_learning/reinforcement_learning/</loc>
+         <lastmod>2021-09-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>

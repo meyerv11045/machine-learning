@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/activation_functions/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Activation Functions - ML Notebook</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">ML Notebook</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Random <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../map/" class="dropdown-item">Map of ML</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Activation Functions</a>
+</li>
+                                    
+<li>
+    <a href="../reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../map/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../reinforcement_learning/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#activation-functions" class="nav-link">Activation Functions</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#why-do-we-need-activation-functions" class="nav-link">Why do we need activation functions?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#sigmoidlogistic" class="nav-link">Sigmoid/Logistic</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#tanh-hyperbolic-tangent" class="nav-link">TanH/ Hyperbolic Tangent</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#relu-rectified-linear-unit" class="nav-link">ReLU (Rectified Linear Unit)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#leaky-relu" class="nav-link">Leaky ReLU</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="activation-functions">Activation Functions</h1>
+<ul>
+<li>Mathematical equations that determine the output of a node/neuron in a neural network</li>
+<li>Determines whether each neuron should be activated based on the neuron's input and the specific activation function</li>
+<li>Normalize the output of a neuron to a range: [0,1] or [-1,1]</li>
+<li>Must be computationally efficient b/c they are calculated across thousands or millions of neurons for each pass</li>
+<li>Having a computationally efficient derivative is good too for backpropagation</li>
+<li>Can be as simple as a step function that turns the neuron output on or off (e.g. 0 or 1) </li>
+<li>Binary Step Function (Doesn't allow multi-value outputs so it can't do multi-class classification)</li>
+<li>Can be a trasnformation that maps input signals to output signals</li>
+<li>Linear activations functions collapse a neural network into one layer b/c a linear combination of linear functions is still a linear function (not very useful)</li>
+<li>Can't use backpropagation with linear activation functions b/c the derivative is a constant so its impossible to see the effect of changing weights</li>
+<li>Non-linear activation functions allow the neural network to learn more complex data like images, videos, and audio</li>
+<li>Allow backpropagation b/c the derivative function is related to the inputs</li>
+<li>Allow sacking of multiple hidden layers unlike linear activation functions</li>
+<li>Most all processes can be modeled by a neural network w/ nonlinear activation functions</li>
+</ul>
+<h2 id="why-do-we-need-activation-functions">Why do we need activation functions?</h2>
+<p>Matrix multiplication and vector addition are simply linear transformations so in order to learn any nonlinear representations of data, we need to introduce a non-linear function or else the most complex classification boundary it can learn will be linear (e.g. line, plane, etc. ) which isn't that useful for interesting problems.</p>
+<p>In order to introduce non-linearity (otherwise matrix ops will result in only linear transformations), we apply non-linear activation functions pointwise to the results of the linear transformations at each layer.</p>
+<h2 id="sigmoidlogistic">Sigmoid/Logistic</h2>
+<p><img alt="Sigmoid or logistic activation function" src="https://missinglink.ai/wp-content/uploads/2018/11/sigmoidlogisticgraph.png" /></p>
+<p>
+<script type="math/tex">\sigma(x) = \dfrac{1}{1 + e^{-x}}</script>
+</p>
+<p>
+<script type="math/tex">\dfrac{d}{dx}\sigma(x) = \sigma(x)(1 - \sigma(x))</script>
+</p>
+<p>Pros: </p>
+<ul>
+<li><em>Smooth Gradient</em> prevents jumps in the output values</li>
+<li><em>Output vaues bound</em> btw 0 and 1, normalizing the each neuron's output</li>
+<li><em>Clear predictions</em>- any values above 2 or below -2 are very close to the edge of the curve </li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Vanishing Gradient- almost no change in the prediction for very high and very low input values</li>
+<li>Can result in the network refusing to learn further or being too slow to reach an accurate prediction</li>
+<li><em>Outputs not zero centered</em></li>
+<li><em>Computationally expensive</em></li>
+</ul>
+<p>Detailed Derivation:</p>
+<p>
+<script type="math/tex; mode=display"> \begin{align}\dfrac{d}{dx} \sigma(x) &= \dfrac{d}{dx} \left[ \dfrac{1}{1 + e^{-x}} \right] \\ &= \dfrac{d}{dx} \left( 1 + \mathrm{e}^{-x} \right)^{-1} \\ &= -(1 + e^{-x})^{-2}(-e^{-x}) \\ &= \dfrac{e^{-x}}{\left(1 + e^{-x}\right)^2} \\ &= \dfrac{1}{1 + e^{-x}\ } \cdot \dfrac{e^{-x}}{1 + e^{-x}}  \\ &= \dfrac{1}{1 + e^{-x}\ } \cdot \dfrac{(1 + e^{-x}) - 1}{1 + e^{-x}}  \\ &= \dfrac{1}{1 + e^{-x}\ } \cdot \left( \dfrac{1 + e^{-x}}{1 + e^{-x}} - \dfrac{1}{1 + e^{-x}} \right) \\ &= \dfrac{1}{1 + e^{-x}\ } \cdot \left( 1 - \dfrac{1}{1 + e^{-x}} \right) \\ &= \sigma(x) \cdot (1 - \sigma(x)) \end{align} </script>
+</p>
+<hr />
+<h2 id="tanh-hyperbolic-tangent">TanH/ Hyperbolic Tangent</h2>
+<p><img alt="TanH or hyperbolic tangent activation function" src="https://missinglink.ai/wp-content/uploads/2018/11/tanhhyperbolic.png" /></p>
+<p>Similar in advantages and disadvantages except it has the advantage of being <em>zero centered</em>, making it easier to models input that have strongly negative, neutral, and strongly positive values</p>
+<h2 id="relu-rectified-linear-unit">ReLU (Rectified Linear Unit)</h2>
+<p><img alt="ReLU (Rectified Linear Unit) activation function" src="https://missinglink.ai/wp-content/uploads/2018/11/relu.png" /></p>
+<p>Pros: </p>
+<ul>
+<li><em>Computationally efficient</em>- allows the network to converge quickly </li>
+<li><em>Non-linear</em>- although it seems lik e a lienar function, its derivative allows for backpropagation</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li><em>The Dying ReLU problem</em>- as inputs approach zero or are negative, the gradient becomes zero, so the network can't perform backpropagation and therefore cannot learn</li>
+</ul>
+<h2 id="leaky-relu">Leaky ReLU</h2>
+<p><img alt="Leaky ReLU activation function" src="https://missinglink.ai/wp-content/uploads/2018/11/leakyrelu.png" /></p>
+<p>Pros:</p>
+<ul>
+<li><em>Prevents dying ReLU problem</em>- the smallpositive slope in the negative area enables backpropagation for negative inputs</li>
+<li>Otherwise like ReLU</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li><em>Inconsistent Results</em>- does't provide consistent predicitions for negative input values</li>
+</ul>
+<p>https://missinglink.ai/guides/neural-network-concepts/7-types-neural-network-activation-functions-right/</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
