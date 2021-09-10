@@ -1,0 +1,18 @@
+site_name: ML Notebook
+site_url: https://meyerv11045.github.com/machine-learning
+docs_dir: notes
+
+extra_javascript: 
+    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+markdown_extensions:
+    - mdx_math:
+        enable_dollar_delimiter: True
+
+nav:
+  - Home: 'index.md'
+  - Random:
+    - 'Map of ML': 'machine_learning/map.md'
+    - 'Activation Functions': 'machine_learning/activation_functions.md'
+    - 'Reinforcement Learning': 'machine_learning/reinforcement_learning.md'
+  
