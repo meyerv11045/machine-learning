@@ -1,7 +1,5 @@
 # Supervised Learning
 
-## Data Scaling for Model Stability
-
 ## Function Approximation
 Function approximation is a technique for estimating an unknown underyling function using observations from the domain and their resulting image.
 
@@ -12,7 +10,7 @@ Supervised learning achieves this by minimizing the error between predicted outp
 
 Thus, simple feedforward neural networks can be better thought of as function approximators rather than models of how the brain works.
 
-The true function mapping inputs to outputs is referred to as the **target** function since it is the target of the learning process.
+The true function mapping inputs to outputs is referred to as the **target function** since it is the target of the learning process.
 
 Thus, intuitively we can better get a sense of what the function is by observing more input-output data points.
 

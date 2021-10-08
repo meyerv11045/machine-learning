@@ -21,9 +21,6 @@ Matrix multiplication and vector addition are simply linear transformations so i
 In order to introduce non-linearity (otherwise matrix ops will result in only linear transformations), we apply non-linear activation functions pointwise to the results of the linear transformations at each layer.
 
 ## Sigmoid/Logistic 
-
-![Sigmoid or logistic activation function](https://missinglink.ai/wp-content/uploads/2018/11/sigmoidlogisticgraph.png)
-
 $\sigma(x) = \dfrac{1}{1 + e^{-x}}$
 
 $\dfrac{d}{dx}\sigma(x) = \sigma(x)(1 - \sigma(x))$
@@ -50,19 +47,11 @@ $$ \begin{align}\dfrac{d}{dx} \sigma(x) &= \dfrac{d}{dx} \left[ \dfrac{1}{1 + e^
 ---
 
 ## TanH/ Hyperbolic Tangent
-
-![TanH or hyperbolic tangent activation function](https://missinglink.ai/wp-content/uploads/2018/11/tanhhyperbolic.png)
-
-
-
 Similar in advantages and disadvantages except it has the advantage of being *zero centered*, making it easier to models input that have strongly negative, neutral, and strongly positive values
 
 
 
 ## ReLU (Rectified Linear Unit)
-
-![ReLU (Rectified Linear Unit) activation function](https://missinglink.ai/wp-content/uploads/2018/11/relu.png)
-
 Pros: 
 
 - *Computationally efficient*- allows the network to converge quickly 
@@ -75,9 +64,6 @@ Cons:
 
 
 ## Leaky ReLU
-
-![Leaky ReLU activation function](https://missinglink.ai/wp-content/uploads/2018/11/leakyrelu.png)
-
 Pros:
 
 - *Prevents dying ReLU problem*- the smallpositive slope in the negative area enables backpropagation for negative inputs
@@ -88,4 +74,3 @@ Cons:
 - *Inconsistent Results*- does't provide consistent predicitions for negative input values
 
 https://missinglink.ai/guides/neural-network-concepts/7-types-neural-network-activation-functions-right/
-

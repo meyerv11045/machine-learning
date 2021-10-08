@@ -16,4 +16,7 @@ nav:
     - 'Supervised Learning': 'machine_learning/supervised_learning.md'
     - 'Activation Functions': 'machine_learning/activation_functions.md'
     - 'Reinforcement Learning': 'machine_learning/reinforcement_learning.md'
-  
+  - Optimization:
+    - 'Overview': 'optimization/overview.md'
+    - 'Model Predictive Control': 'optimization/mpc.md'
+    - 'Function Approximation': 'optimization/func_approx.md'
