@@ -57,6 +57,23 @@
 </li>
                                 </ul>
                             </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Optimization <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../optimization/overview/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../../optimization/mpc/" class="dropdown-item">Model Predictive Control</a>
+</li>
+                                    
+<li>
+    <a href="../../optimization/func_approx/" class="dropdown-item">Function Approximation</a>
+</li>
+                                </ul>
+                            </li>
                         </ul>
 
                     <ul class="nav navbar-nav ml-auto">
@@ -143,7 +160,6 @@
 <p>Matrix multiplication and vector addition are simply linear transformations so in order to learn any nonlinear representations of data, we need to introduce a non-linear function or else the most complex classification boundary it can learn will be linear (e.g. line, plane, etc. ) which isn't that useful for interesting problems.</p>
 <p>In order to introduce non-linearity (otherwise matrix ops will result in only linear transformations), we apply non-linear activation functions pointwise to the results of the linear transformations at each layer.</p>
 <h2 id="sigmoidlogistic">Sigmoid/Logistic</h2>
-<p><img alt="Sigmoid or logistic activation function" src="https://missinglink.ai/wp-content/uploads/2018/11/sigmoidlogisticgraph.png" /></p>
 <p>
 <script type="math/tex">\sigma(x) = \dfrac{1}{1 + e^{-x}}</script>
 </p>
@@ -169,10 +185,8 @@
 </p>
 <hr />
 <h2 id="tanh-hyperbolic-tangent">TanH/ Hyperbolic Tangent</h2>
-<p><img alt="TanH or hyperbolic tangent activation function" src="https://missinglink.ai/wp-content/uploads/2018/11/tanhhyperbolic.png" /></p>
 <p>Similar in advantages and disadvantages except it has the advantage of being <em>zero centered</em>, making it easier to models input that have strongly negative, neutral, and strongly positive values</p>
 <h2 id="relu-rectified-linear-unit">ReLU (Rectified Linear Unit)</h2>
-<p><img alt="ReLU (Rectified Linear Unit) activation function" src="https://missinglink.ai/wp-content/uploads/2018/11/relu.png" /></p>
 <p>Pros: </p>
 <ul>
 <li><em>Computationally efficient</em>- allows the network to converge quickly </li>
@@ -183,7 +197,6 @@
 <li><em>The Dying ReLU problem</em>- as inputs approach zero or are negative, the gradient becomes zero, so the network can't perform backpropagation and therefore cannot learn</li>
 </ul>
 <h2 id="leaky-relu">Leaky ReLU</h2>
-<p><img alt="Leaky ReLU activation function" src="https://missinglink.ai/wp-content/uploads/2018/11/leakyrelu.png" /></p>
 <p>Pros:</p>
 <ul>
 <li><em>Prevents dying ReLU problem</em>- the smallpositive slope in the negative area enables backpropagation for negative inputs</li>

@@ -57,6 +57,23 @@
 </li>
                                 </ul>
                             </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Optimization <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../optimization/overview/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../../optimization/mpc/" class="dropdown-item">Model Predictive Control</a>
+</li>
+                                    
+<li>
+    <a href="../../optimization/func_approx/" class="dropdown-item">Function Approximation</a>
+</li>
+                                </ul>
+                            </li>
                         </ul>
 
                     <ul class="nav navbar-nav ml-auto">
@@ -95,10 +112,6 @@
             
             <li class="nav-item" data-level="1"><a href="#supervised-learning" class="nav-link">Supervised Learning</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#data-scaling-for-model-stability" class="nav-link">Data Scaling for Model Stability</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
             <li class="nav-item" data-level="2"><a href="#function-approximation" class="nav-link">Function Approximation</a>
               <ul class="nav flex-column">
               </ul>
@@ -115,13 +128,12 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="supervised-learning">Supervised Learning</h1>
-<h2 id="data-scaling-for-model-stability">Data Scaling for Model Stability</h2>
 <h2 id="function-approximation">Function Approximation</h2>
 <p>Function approximation is a technique for estimating an unknown underyling function using observations from the domain and their resulting image.</p>
 <p>Given a dataset of inputs and outputs, we can assume there is an unkwnown underyling function that maps the inputs to the outputs. We can use supervised learning techniques to approximate this function.</p>
 <p>Supervised learning achieves this by minimizing the error between predicted outputs and expected outputs from the domain by changing its parameters (the weights of the network).</p>
 <p>Thus, simple feedforward neural networks can be better thought of as function approximators rather than models of how the brain works.</p>
-<p>The true function mapping inputs to outputs is referred to as the <strong>target</strong> function since it is the target of the learning process.</p>
+<p>The true function mapping inputs to outputs is referred to as the <strong>target function</strong> since it is the target of the learning process.</p>
 <p>Thus, intuitively we can better get a sense of what the function is by observing more input-output data points.</p>
 <p>The universal approximation theorem states a feedforward NN with a linear output layer and at least 1 hidden layer with a nonlinear activation function can approximate any function mapping between two finite dimensional spaces with any desired non-zero amount of error (provided enough hidden units).</p>
 <p>Below is an example of <script type="math/tex">y=x^2</script> being approximated by a simple feedforward NN with 2 hidden layers of 10 nodes with relu activation trained on 100 observations:

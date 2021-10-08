@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/map/">
+        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/optimization/overview/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Map of ML - ML Notebook</title>
+        <title>Overview - ML Notebook</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -36,41 +36,41 @@
                             <li class="navitem">
                                 <a href="../.." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Map of ML</a>
+    <a href="../../machine_learning/map/" class="dropdown-item">Map of ML</a>
 </li>
                                     
 <li>
-    <a href="../supervised_learning/" class="dropdown-item">Supervised Learning</a>
+    <a href="../../machine_learning/supervised_learning/" class="dropdown-item">Supervised Learning</a>
 </li>
                                     
 <li>
-    <a href="../activation_functions/" class="dropdown-item">Activation Functions</a>
+    <a href="../../machine_learning/activation_functions/" class="dropdown-item">Activation Functions</a>
 </li>
                                     
 <li>
-    <a href="../reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
+    <a href="../../machine_learning/reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Optimization <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../optimization/overview/" class="dropdown-item">Overview</a>
+    <a href="./" class="dropdown-item active">Overview</a>
 </li>
                                     
 <li>
-    <a href="../../optimization/mpc/" class="dropdown-item">Model Predictive Control</a>
+    <a href="../mpc/" class="dropdown-item">Model Predictive Control</a>
 </li>
                                     
 <li>
-    <a href="../../optimization/func_approx/" class="dropdown-item">Function Approximation</a>
+    <a href="../func_approx/" class="dropdown-item">Function Approximation</a>
 </li>
                                 </ul>
                             </li>
@@ -83,12 +83,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../.." class="nav-link">
+                                <a rel="prev" href="../../machine_learning/reinforcement_learning/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../supervised_learning/" class="nav-link">
+                                <a rel="next" href="../mpc/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -110,17 +110,29 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#map-of-ml" class="nav-link">Map of ML</a>
+            <li class="nav-item" data-level="1"><a href="#overview" class="nav-link">Overview</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#supervised-learning" class="nav-link">Supervised Learning</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#unsupervised-learning" class="nav-link">Unsupervised Learning</a>
+            <li class="nav-item" data-level="2"><a href="#what-is-optimization" class="nav-link">What is Optimization?</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#reinforcement-learning" class="nav-link">Reinforcement Learning</a>
+            <li class="nav-item" data-level="2"><a href="#linear-programming-lp" class="nav-link">Linear Programming (LP)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#nonlinear-programming-nlp" class="nav-link">Nonlinear Programming (NLP)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#sequential-programming" class="nav-link">Sequential Programming</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#dynamic-programming-dp" class="nav-link">Dynamic Programming (DP)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#piece-wise-affine-functions-pwas" class="nav-link">Piece Wise Affine Functions (PWAs)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -131,18 +143,42 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="map-of-ml">Map of ML</h1>
-<h2 id="supervised-learning">Supervised Learning</h2>
-<h2 id="unsupervised-learning">Unsupervised Learning</h2>
-<h3 id="auto-encoders">Auto-Encoders</h3>
-<p>num input layers = num output layers but smaller num hidden layers.</p>
-<p>This forces the network to learn a compressed representation of the data. A simple autoencoder could take 100 dimensional data (100 input units) and represent it low dimensionally as 50 dimensions if using 50 hidden units.</p>
-<p>Relies on the input data having features (completely random noise would be tough to learn anything from)</p>
-<p>Mathematically, it can be thought of as trying to learn an approximation to the identity function so the output is similar to the input. Allows us to discover interesting structure about the data.</p>
-<h2 id="reinforcement-learning">Reinforcement Learning</h2>
-<p>A control policy <script type="math/tex">\pi</script> maps the continuous state vector <script type="math/tex">x</script> to a continuous action vector <script type="math/tex">u</script> (often a control vector).</p>
+<h1 id="overview">Overview</h1>
+<p>Optimization is a huge field with a tremendous number of applications. It is also intertwined in ML so that is why its include in the ML notebook. Here is where I will try to keep a working glossary of areas I am being introduced to with a brief overview of what they are. Being able to map out how many pieces of a field fit together greatly helps me when diving deeper into any one area.</p>
+<h2 id="what-is-optimization">What is Optimization?</h2>
+<p>Optimizing simply stands for finding the maximum or minimum of a function. This max or min is often subject to a series of constraints. The form of the function being optimized and the constraints being adhered to (e.g. linear, nonlinear, continuous, etc.) determines the type of problem and thus the technique used to solve them. </p>
+<p>Here is the mathematical definition of an optimization problem: </p>
 <p>
-<script type="math/tex">u = \pi(x,t,\theta)</script> where <script type="math/tex">\theta</script> is the set of parameters to be learned by the control policy and <script type="math/tex">t</script> is the specific timestep</p></div>
+<script type="math/tex; mode=display">\min f_0(x) </script>
+subject to the contraints:
+<script type="math/tex; mode=display"> f_i(x) \leq b_i</script>
+</p>
+<p><a href="https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf">Here</a> is the textbook on convex optimization used for reference.</p>
+<hr />
+<h2 id="linear-programming-lp">Linear Programming (LP)</h2>
+<p>Optimizing a linear objective/cost function subject to linear equality/inequality constraints </p>
+<hr />
+<h2 id="nonlinear-programming-nlp">Nonlinear Programming (NLP)</h2>
+<p>Optimizing an objective/cost function over a set of real variables subject to system of equations called constraints (more general class that includes LP)</p>
+<h3 id="quadtratic-programming-qp">Quadtratic Programming (QP)</h3>
+<p>Methods for optimizing a quadtratic objective function subject to linear constraints</p>
+<hr />
+<h2 id="sequential-programming">Sequential Programming</h2>
+<h3 id="sequential-quadtratic-programming-sqp">Sequential Quadtratic Programming (SQP)</h3>
+<p>Involves solving a series of subproblems where each is a quadratic program</p>
+<h3 id="sequential-linear-quadtratic-programming-slqp">Sequential Linear Quadtratic Programming (SLQP)</h3>
+<p>Involves solving a linear program and equality constrained quadratic program at each step</p>
+<hr />
+<h2 id="dynamic-programming-dp">Dynamic Programming (DP)</h2>
+<p>Involves breaking down the main optimization problem into simpler sub-problems.</p>
+<p>The <strong>Bellman Equation</strong> describes the relationship between the value of the larger problem and the values of the sub-problems</p>
+<hr />
+<h2 id="piece-wise-affine-functions-pwas">Piece Wise Affine Functions (PWAs)</h2>
+<p>Approximates a function using a series of lines in 2D, planes in 3D, &amp; hyperplanes in higher dimensional spaces. </p>
+<p><img alt="PWA of Function" src="../static/PWA-of-real.png" /></p>
+<p>While the picture above shows the PWA given a known function, PWAs are most often used when there is a set of datapoints representing the functions inputs and outputs. The task is then to construct a PWA from the data such that it best approximates the true function that is mapping the inputs to the outputs.
+<img alt="PWA from Data" src="../static/PWA-from-data.png" /></p>
+<p>Once you have a PWA made from your dataset, you can then make predictions on new inputs as to what the true function would map to.</p></div>
             </div>
         </div>
 

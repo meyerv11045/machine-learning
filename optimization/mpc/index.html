@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/map/">
+        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/optimization/mpc/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Map of ML - ML Notebook</title>
+        <title>Model Predictive Control - ML Notebook</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -36,41 +36,41 @@
                             <li class="navitem">
                                 <a href="../.." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Map of ML</a>
+    <a href="../../machine_learning/map/" class="dropdown-item">Map of ML</a>
 </li>
                                     
 <li>
-    <a href="../supervised_learning/" class="dropdown-item">Supervised Learning</a>
+    <a href="../../machine_learning/supervised_learning/" class="dropdown-item">Supervised Learning</a>
 </li>
                                     
 <li>
-    <a href="../activation_functions/" class="dropdown-item">Activation Functions</a>
+    <a href="../../machine_learning/activation_functions/" class="dropdown-item">Activation Functions</a>
 </li>
                                     
 <li>
-    <a href="../reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
+    <a href="../../machine_learning/reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Optimization <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../optimization/overview/" class="dropdown-item">Overview</a>
+    <a href="../overview/" class="dropdown-item">Overview</a>
 </li>
                                     
 <li>
-    <a href="../../optimization/mpc/" class="dropdown-item">Model Predictive Control</a>
+    <a href="./" class="dropdown-item active">Model Predictive Control</a>
 </li>
                                     
 <li>
-    <a href="../../optimization/func_approx/" class="dropdown-item">Function Approximation</a>
+    <a href="../func_approx/" class="dropdown-item">Function Approximation</a>
 </li>
                                 </ul>
                             </li>
@@ -83,12 +83,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../.." class="nav-link">
+                                <a rel="prev" href="../overview/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../supervised_learning/" class="nav-link">
+                                <a rel="next" href="../func_approx/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -110,17 +110,17 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#map-of-ml" class="nav-link">Map of ML</a>
+            <li class="nav-item" data-level="1"><a href="#model-predictive-control" class="nav-link">Model Predictive Control</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#supervised-learning" class="nav-link">Supervised Learning</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#unsupervised-learning" class="nav-link">Unsupervised Learning</a>
+            <li class="nav-item" data-level="2"><a href="#explicit-mpc" class="nav-link">Explicit MPC</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#reinforcement-learning" class="nav-link">Reinforcement Learning</a>
+            <li class="nav-item" data-level="2"><a href="#optimality" class="nav-link">Optimality:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#recursive-feasability" class="nav-link">Recursive Feasability:</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -131,18 +131,58 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="map-of-ml">Map of ML</h1>
-<h2 id="supervised-learning">Supervised Learning</h2>
-<h2 id="unsupervised-learning">Unsupervised Learning</h2>
-<h3 id="auto-encoders">Auto-Encoders</h3>
-<p>num input layers = num output layers but smaller num hidden layers.</p>
-<p>This forces the network to learn a compressed representation of the data. A simple autoencoder could take 100 dimensional data (100 input units) and represent it low dimensionally as 50 dimensions if using 50 hidden units.</p>
-<p>Relies on the input data having features (completely random noise would be tough to learn anything from)</p>
-<p>Mathematically, it can be thought of as trying to learn an approximation to the identity function so the output is similar to the input. Allows us to discover interesting structure about the data.</p>
-<h2 id="reinforcement-learning">Reinforcement Learning</h2>
-<p>A control policy <script type="math/tex">\pi</script> maps the continuous state vector <script type="math/tex">x</script> to a continuous action vector <script type="math/tex">u</script> (often a control vector).</p>
-<p>
-<script type="math/tex">u = \pi(x,t,\theta)</script> where <script type="math/tex">\theta</script> is the set of parameters to be learned by the control policy and <script type="math/tex">t</script> is the specific timestep</p></div>
+<h1 id="model-predictive-control">Model Predictive Control</h1>
+<ul>
+<li>Relies on a dynamic model to make predictions for future values of the controlled variables of the system. </li>
+<li>It then solves a contrained optimization problem to calculate the optimal control action that minimizes the difference between the predicted controlled values and the desired/set control values.</li>
+<li>Main limitation: High computational cost since this optimization problem must be solved at each time step  <ul>
+<li>The computational cost increases even more as the time horizon over which to predict future control values increases.</li>
+<li>The computational cost becomes intractable to run realtime as the number of states and contraints grows (NN approximation could fix this)</li>
+<li>Explicit MPC (eMPC) and learning-based NN approaches have been proposed to overcome this</li>
+</ul>
+</li>
+<li>Takes on many forms: one-norm, infinite norm, PWA model, tracking</li>
+</ul>
+<h2 id="explicit-mpc">Explicit MPC</h2>
+<ul>
+<li>Goal is to rewrite the optimization problem as a multi-parametric quadtratic programming (mpQP)</li>
+<li>This is possible for linear systems but cannot be extended to nonlinear systems</li>
+<li>An explicit solution to the mpQP has been demonstrated and it is of the form of a PWA function</li>
+<li>The PWA function defined over the state space will act as a fast prediction/lookup function for control policies given a input state meaning there is no need to solve the optimization problem online!<ul>
+<li>This result was achieved by Bemporad et al. (2002)</li>
+</ul>
+</li>
+<li>Resources: (<a href="http://www.bcamath.org/documentos_public/archivos/actividades_cientificas/TalkNUMERIWAVES20130412TP.pdf">Brief mention</a>)</li>
+</ul>
+<h2 id="optimality">Optimality:</h2>
+<ul>
+<li>Not always feasible to run the optimization process to complete convergence for the most optimal control output (especially when running online) </li>
+<li>Therefore, optimality is sometimes relaxed to only require a sufficient decrease in the cost/objective function<ul>
+<li>Then the optimization problem would be terminated at a feasible but sub-optimal stage</li>
+</ul>
+</li>
+</ul>
+<h2 id="recursive-feasability">Recursive Feasability:</h2>
+<ul>
+<li>MPC controllers are not gauranteed to be stabilizing (linear quadratic control is gauranted to be stabilizing)<ul>
+<li>Stability must be built in when defining the optimization problem</li>
+</ul>
+</li>
+<li>The optimization problem’s feasbility can be lost when the state is driven to a region in which the optimization problem has no solution</li>
+<li>typical approach to solve this is to append constrainst to the optimization problem to guarantee that loss of feasability cannot occur (that is what was done in the papers I have read so far)<ul>
+<li>When this is done, an MPC controller is said to be recursively feasible meaning it cannot put the state in a place with no solution to the optimization problem</li>
+</ul>
+</li>
+<li>Constructing an MPC controller with the theoretical (a-priori) guarantee of recursive feasability is not always desirable or easy to do</li>
+<li>Sometimes we might have a situation where given an MPC controller and the goal is to determine if it is recursively feasbile<ul>
+<li>The goal is primarly to invalidate the controller by detecting problematic states where the recursive feasability is lost </li>
+<li>Second objective is to find certificates of guaranteed recursive feasability</li>
+</ul>
+</li>
+<li>DEF: The MPC controller is recursively feasible if and only if for all ini- tially feasible x0 and for all optimal sequences of control inputs the MPC optimization problem remains feasible for all time. </li>
+<li>DEF: The MPC controller is strongly recursively feasible if and only if for all initially feasible x0 and for all sequences of feasible control inputs the MPC optimization problem remains feasible for all time. </li>
+<li><a href="https://users.isy.liu.se/johanl/2011_AUT_OOPS.pdf">Resource</a> (analysis tool for determining recursive feasability of an MPC controller)</li>
+</ul></div>
             </div>
         </div>
 

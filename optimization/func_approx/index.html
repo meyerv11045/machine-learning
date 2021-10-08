@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/map/">
+        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/optimization/func_approx/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Map of ML - ML Notebook</title>
+        <title>Function Approximation - ML Notebook</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -36,41 +36,41 @@
                             <li class="navitem">
                                 <a href="../.." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Map of ML</a>
+    <a href="../../machine_learning/map/" class="dropdown-item">Map of ML</a>
 </li>
                                     
 <li>
-    <a href="../supervised_learning/" class="dropdown-item">Supervised Learning</a>
+    <a href="../../machine_learning/supervised_learning/" class="dropdown-item">Supervised Learning</a>
 </li>
                                     
 <li>
-    <a href="../activation_functions/" class="dropdown-item">Activation Functions</a>
+    <a href="../../machine_learning/activation_functions/" class="dropdown-item">Activation Functions</a>
 </li>
                                     
 <li>
-    <a href="../reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
+    <a href="../../machine_learning/reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Optimization <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../optimization/overview/" class="dropdown-item">Overview</a>
+    <a href="../overview/" class="dropdown-item">Overview</a>
 </li>
                                     
 <li>
-    <a href="../../optimization/mpc/" class="dropdown-item">Model Predictive Control</a>
+    <a href="../mpc/" class="dropdown-item">Model Predictive Control</a>
 </li>
                                     
 <li>
-    <a href="../../optimization/func_approx/" class="dropdown-item">Function Approximation</a>
+    <a href="./" class="dropdown-item active">Function Approximation</a>
 </li>
                                 </ul>
                             </li>
@@ -83,12 +83,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../.." class="nav-link">
+                                <a rel="prev" href="../mpc/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../supervised_learning/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -110,20 +110,8 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#map-of-ml" class="nav-link">Map of ML</a>
+            <li class="nav-item" data-level="1"><a href="#function-approximation" class="nav-link">Function Approximation</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#supervised-learning" class="nav-link">Supervised Learning</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#unsupervised-learning" class="nav-link">Unsupervised Learning</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#reinforcement-learning" class="nav-link">Reinforcement Learning</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -131,18 +119,7 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="map-of-ml">Map of ML</h1>
-<h2 id="supervised-learning">Supervised Learning</h2>
-<h2 id="unsupervised-learning">Unsupervised Learning</h2>
-<h3 id="auto-encoders">Auto-Encoders</h3>
-<p>num input layers = num output layers but smaller num hidden layers.</p>
-<p>This forces the network to learn a compressed representation of the data. A simple autoencoder could take 100 dimensional data (100 input units) and represent it low dimensionally as 50 dimensions if using 50 hidden units.</p>
-<p>Relies on the input data having features (completely random noise would be tough to learn anything from)</p>
-<p>Mathematically, it can be thought of as trying to learn an approximation to the identity function so the output is similar to the input. Allows us to discover interesting structure about the data.</p>
-<h2 id="reinforcement-learning">Reinforcement Learning</h2>
-<p>A control policy <script type="math/tex">\pi</script> maps the continuous state vector <script type="math/tex">x</script> to a continuous action vector <script type="math/tex">u</script> (often a control vector).</p>
-<p>
-<script type="math/tex">u = \pi(x,t,\theta)</script> where <script type="math/tex">\theta</script> is the set of parameters to be learned by the control policy and <script type="math/tex">t</script> is the specific timestep</p></div>
+<h1 id="function-approximation">Function Approximation</h1></div>
             </div>
         </div>
 
