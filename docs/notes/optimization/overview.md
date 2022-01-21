@@ -49,3 +49,31 @@ While the picture above shows the PWA given a known function, PWAs are most ofte
 ![PWA from Data](static/PWA-from-data.png)
 
 Once you have a PWA made from your dataset, you can then make predictions on new inputs as to what the true function would map to.
+
+---
+## Constraints
+- A constraint is a condition of an optimization problem that the solution must satisfy
+- **Feasible Set**- is the set of candidate solutions that satisfy all constraints
+    - A point is **infeasible** if it does not satisfy a constraint
+- A constraint is **binding** if an inequality constraint holds with equality at the optimal point
+    - i.e. the point is at the edge of the feasible set and cannot move anymore in the direction of the constraint, even if doing so would improve the value of the objective function, since it would move outside the feasible set
+- A constraint is **non-binding** if the point could be moved in the direction of the constraint
+    - i.e. the point is not at the edge of the feasible set and can be moved more in the direction of the constraint, however doing so would not be optimal 
+    - This can mean under certain conditions that the optimization problem would have the same solution in the absence of the constraint since the objective function's minimum does not push up against the edge of the feasible set
+    - 
+
+
+## Slack Variable
+- A variable added to an inequality constraint to transform it into an equality
+- 
+- If the slack variable for a constraint is zero at a point, the constraint is binding there
+- If the slack variable for a constraint is positive at a point, the constraint is non-binding there
+- If the slack variable for a constraint is negative at a point, the point is infeasible as it does not satisfy the constraint (can be thought of as outside the feasible set)
+    - Slack variables can never be negative for most interior point and simplex solvers 
+- For example, introducing the slack variable $y \geq 0$, the inequality constraint of $Ax \leq b$ can be transformed into an equality of $Ax + y = b$
+- Intuition: slack can be thought of like a distance from a candidate solution to the constraint boundary ($y = Ax - b$)
+- A constraint of $Ax > b$ will be transformed into two constraints of $s = Ax - b$ and $s > 0$ that is used by most solvers
+---
+
+## Lagrange Multipliers
+- KKT conditions generalize the method of lagrange multipliers and allow inequality constraints
