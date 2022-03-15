@@ -1,4 +1,6 @@
 # Supervised Learning
+- Regression- predicting continuous values
+- Classification- predicting discrete values
 
 ## Function Approximation
 Function approximation is a technique for estimating an unknown underyling function using observations from the domain and their resulting image.
@@ -17,7 +19,7 @@ Thus, intuitively we can better get a sense of what the function is by observing
 The universal approximation theorem states a feedforward NN with a linear output layer and at least 1 hidden layer with a nonlinear activation function can approximate any function mapping between two finite dimensional spaces with any desired non-zero amount of error (provided enough hidden units).
 
 Below is an example of $y=x^2$ being approximated by a simple feedforward NN with 2 hidden layers of 10 nodes with relu activation trained on 100 observations:
-![Example Approximation](https://machinelearningmastery.com/wp-content/uploads/2019/12/Scatter-Plot-of-Input-vs-Actual-and-Predicted-Values-for-the-Neural-Net-Approximation.png)
+![Example Approximation](https://machinelearningmastery.com/wp-content/uploads/2019/12/Scatter-Plot-of-Input-vs-Actual-and-Predicted-Values-for-the-Neural-Net-Approximation.png).
 
 
 ## Resources

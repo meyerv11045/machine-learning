@@ -12,11 +12,23 @@ markdown_extensions:
 nav:
   - Home: 'index.md'
   - Notes:
-    - 'Map of ML': 'machine_learning/map.md'
     - 'Supervised Learning': 'machine_learning/supervised_learning.md'
-    - 'Activation Functions': 'machine_learning/activation_functions.md'
+    - 'Regression': 'machine_learning/regression.md'
+    - 'Classification': 'machine_learning/classification.md'
+    - 'Optimization Techniques': 'machine_learning/optimization.md'
+    - 'Feature Scaling': 'machine_learning/feature_scaling.md'
+    - 'Model Selection': 'machine_learning/model_selection.md'
+    - Neural Networks:
+      - 'Activation Functions': 'machine_learning/nn/activation_functions.md'
+      - 'PyTorch': 'machine_learning/nn/pytorch.md'
+      - 'AutoEncoders': 'machine_learning/nn/auto_encoders.md'
     - 'Reinforcement Learning': 'machine_learning/reinforcement_learning.md'
   - Optimization:
     - 'Overview': 'optimization/overview.md'
+    - 'Convergence': 'optimization/convergence.md'
+    - Root Finding methods:
+      - 'Newtons Method': 'optimization/root-methods/newtons.md'
+      - 'Secant Method': 'optimization/root-methods/secant.md'
+      - 'Bisection': 'optimization/root-methods/bisection.md'
+      - 'Regula Falsi': 'optimization/root-methods/regula_falsi.md'
     - 'Model Predictive Control': 'optimization/mpc.md'
-    - 'Function Approximation': 'optimization/func_approx.md'

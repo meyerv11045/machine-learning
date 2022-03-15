@@ -1,7 +1,5 @@
 # PyTorch Blitz
 
-
-
 autograd- calculates and stores the gradients for each model param in each parameter's `.grad` attribute
 
 simple training loop:
@@ -24,8 +22,6 @@ optimizer = torch.optim.SGD(model.parameters(),lr=1e-2,momentum=0.9)
 optimizer.step() # initiate gradient descent
 ```
 
-
-
 if a parameter in a NN does not `requires_grad` then these params are known as frozen meaning the gradients won't be recomputed. NOTE: `torch.no_grad` also does same thing ([read more](https://pytorch.org/docs/stable/generated/torch.no_grad.html)). also useful for finetuning pretrained networks where you only want to modify the params in the classifer layers to make predictions on the new labels:
 
 ``` python
@@ -39,8 +35,6 @@ for param in model.parameters():
 model.fc = nn.Linear(512, 10)
 
 ```
-
-
 
 ## torch.nn pkg
 
@@ -106,18 +100,54 @@ loss.backward()
 optimizer.step()    # Does the update
 ```
 
-
-
-
-
-
-
 ## recap
 
 - `torch.Tensor` - A *multi-dimensional array* with support for autograd operations like `backward()`. Also *holds the gradient*w.r.t. the tensor.
 - `nn.Module` - Neural network module. *Convenient way of encapsulating parameters*, with helpers for moving them to GPU, exporting, loading, etc.
 - `nn.Parameter` - A kind of Tensor, that is *automatically registered as a parameter when assigned as an attribute to a* `Module`.
 - `autograd.Function` - Implements *forward and backward definitions of an autograd operation*. Every `Tensor` operation creates at least a single `Function` node that connects to functions that created a `Tensor` and *encodes its history*.
+
+
+
+
+
+## gradient clipping 
+
+``` python
+optimizer.zero_grad()
+loss.backward()
+
+# by value
+torch.nn.utils.clip_grad_value_(model.parameters(), clip_value=1)
+
+# by norm
+# torch.nn.utils.clip_grad_norm_(model.parameters(), clip_norm=1)
+
+optimizer.step()
+```
+
+- Note that it stacks all the paremeters into a single vector then performs the clipping 
+    - we want to just clip the gradients from th
+
+
+
+## hooks
+
+- tensor.backward() starts the backward pass on the computational graph with a default starting gradient value of 1.0
+- allow us to inspect (and possibly change) gradients as they flow backwards through the graph 
+- hooks get called on tensors in the order they were added
+- `.retain_grad()` stores the grad on non-leaf/intermediate nodes in the computational graph
+- when adding hooks to a intermediate node in the forward graph (stored in the backward_hooks dict), the function will also be added as a pre-hook to the corresponding node in the backwards graph to be run on the gradient before the node does its thing
+
+
+
+``` python
+def fn(grad):
+  print(grad)
+  return grad + 2 # if you return nothing, the same gradient as before will be used
+
+c.register_hook(fn)
+```
 
 
 

@@ -1,4 +1,6 @@
-**Reinforcement Learning**- the science of learning to make decisions from interaction
+# Reinforcement Learning
+
+- The science of learning to make decisions from interaction
 
 - Differs from other machine learning paradigms in that:
   - No supervision, only a reward signal
@@ -138,9 +140,9 @@
 
 - The actual value function is the expected return
 
-  $V_\pi(s)=E[G_t|S_t=s,\pi]$
+    - $V_\pi(s)=E[G_t|S_t=s,\pi]$
 
-  ​		$ = E[R_{t+1}+\gamma R_{t+2}+\gamma^2R_{t+3}+... | S_t = s,\pi]$
+    - $ = E[R_{t+1}+\gamma R_{t+2}+\gamma^2R_{t+3}+... | S_t = s,\pi]$
 
 - The return has a recursive form since $G_t = R_{t+1}+\gamma G_{t+1}$
 
@@ -155,8 +157,3 @@
 - Can be used to evaluate desirability of states
 
 - Can be used to select btw actions
-
-- 
-
-
-
