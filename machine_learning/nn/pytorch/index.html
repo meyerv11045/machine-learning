@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/nn/pytorch/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>PyTorch - ML Notebook</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">ML Notebook</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../supervised_learning/" class="dropdown-item">Supervised Learning</a>
+</li>
+                                    
+<li>
+    <a href="../../regression/" class="dropdown-item">Regression</a>
+</li>
+                                    
+<li>
+    <a href="../../classification/" class="dropdown-item">Classification</a>
+</li>
+                                    
+<li>
+    <a href="../../optimization/" class="dropdown-item">Optimization Techniques</a>
+</li>
+                                    
+<li>
+    <a href="../../feature_scaling/" class="dropdown-item">Feature Scaling</a>
+</li>
+                                    
+<li>
+    <a href="../../model_selection/" class="dropdown-item">Model Selection</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Neural Networks</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../activation_functions/" class="dropdown-item">Activation Functions</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">PyTorch</a>
+</li>
+            
+<li>
+    <a href="../auto_encoders/" class="dropdown-item">AutoEncoders</a>
+</li>
+    </ul>
+  </li>
+                                    
+<li>
+    <a href="../../reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Optimization <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../optimization/overview/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../../../optimization/convergence/" class="dropdown-item">Convergence</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Root Finding methods</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../../optimization/root-methods/newtons/" class="dropdown-item">Newtons Method</a>
+</li>
+            
+<li>
+    <a href="../../../optimization/root-methods/secant/" class="dropdown-item">Secant Method</a>
+</li>
+            
+<li>
+    <a href="../../../optimization/root-methods/bisection/" class="dropdown-item">Bisection</a>
+</li>
+            
+<li>
+    <a href="../../../optimization/root-methods/regula_falsi/" class="dropdown-item">Regula Falsi</a>
+</li>
+    </ul>
+  </li>
+                                    
+<li>
+    <a href="../../../optimization/mpc/" class="dropdown-item">Model Predictive Control</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../activation_functions/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../auto_encoders/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#pytorch-blitz" class="nav-link">PyTorch Blitz</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#torchnn-pkg" class="nav-link">torch.nn pkg</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#recap" class="nav-link">recap</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gradient-clipping" class="nav-link">gradient clipping</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#hooks" class="nav-link">hooks</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="pytorch-blitz">PyTorch Blitz</h1>
+<p>autograd- calculates and stores the gradients for each model param in each parameter's <code>.grad</code> attribute</p>
+<p>simple training loop:</p>
+<pre><code class="language-python">import torch
+
+model = torchvision.models.resnet18(pretrained=True)
+data = torch.rand(1,3,64,64) # 64 x 64 img with 3 channels
+labels = torch.rand(1,1000)
+
+prediction = model(data) # Forward pass
+
+loss = (prediction - labels).sum()
+
+loss.backward() # backward pass (backprop)
+
+# register all the model params in the optimizer
+optimizer = torch.optim.SGD(model.parameters(),lr=1e-2,momentum=0.9)
+optimizer.step() # initiate gradient descent
+</code></pre>
+<p>if a parameter in a NN does not <code>requires_grad</code> then these params are known as frozen meaning the gradients won't be recomputed. NOTE: <code>torch.no_grad</code> also does same thing (<a href="https://pytorch.org/docs/stable/generated/torch.no_grad.html">read more</a>). also useful for finetuning pretrained networks where you only want to modify the params in the classifer layers to make predictions on the new labels:</p>
+<pre><code class="language-python">model = torchvision.models.resnet18(pretrained=True)
+
+# Freeze all the parameters in the network
+for param in model.parameters():
+    param.requires_grad = False
+
+# replace last linear layer (the classifier) with new unfrozen classification layer  
+model.fc = nn.Linear(512, 10)
+
+</code></pre>
+<h2 id="torchnn-pkg">torch.nn pkg</h2>
+<p><code>nn.Module</code> contains layers and a <code>forward(input)</code> method that returns the output. Can build modules of networks that can be used in other networks. Only have to define the forward function and the backward function will be automatically defined using autograd (relies on autograd parsing the operations in the forward function and creating the appropriate computational graph of all the derivatives)</p>
+<p><code>net.parameters()</code> returns the learnable parameters of a nn module</p>
+<p>only supports mini-batch inputs, no single input samples</p>
+<pre><code class="language-python">import torch.nn as nn
+import torch.nn.functional as F
+
+class Net(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.conv1 = nn.Conv2d(3, 6, 5)
+        self.pool = nn.MaxPool2d(2, 2)
+        self.conv2 = nn.Conv2d(6, 16, 5)
+        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
+
+    def forward(self, x):
+        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(F.relu(self.conv2(x)))
+        x = torch.flatten(x, 1) # flatten all dimensions except batch
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
+
+net = Net()
+</code></pre>
+<p>A loss function takes the (output, target) pair of inputs, and computes a value that estimates how far away the output is from the target. Many are provided by the nn pkg such as <code>nn.MSELoss</code> but you can also define your own </p>
+<p>In order to backpropagate the error/loss, we need to clear the existing gradients (<code>net.zero_grad()</code>) and then call <code>loss.backwards()</code></p>
+<p>https://pytorch.org/docs/stable/nn.html</p>
+<p>updating the weights can be done using the below code since <code>weights = weights - learning rate * gradient</code> for SGD: </p>
+<pre><code class="language-python">learning_rate = 0.01
+for f in net.parameters():
+    f.data.sub_(f.grad.data * learning_rate)
+</code></pre>
+<p>using the torch.optim module lets you easily use other update rules like SGD, Adam, RMSProp, etc. </p>
+<pre><code class="language-python">import torch.optim as optim
+
+# create your optimizer
+optimizer = optim.SGD(net.parameters(), lr=0.01)
+
+# in your training loop:
+optimizer.zero_grad()   # zero the gradient buffers
+output = net(input)
+loss = criterion(output, target)
+loss.backward()
+optimizer.step()    # Does the update
+</code></pre>
+<h2 id="recap">recap</h2>
+<ul>
+<li><code>torch.Tensor</code> - A <em>multi-dimensional array</em> with support for autograd operations like <code>backward()</code>. Also <em>holds the gradient</em>w.r.t. the tensor.</li>
+<li><code>nn.Module</code> - Neural network module. <em>Convenient way of encapsulating parameters</em>, with helpers for moving them to GPU, exporting, loading, etc.</li>
+<li><code>nn.Parameter</code> - A kind of Tensor, that is <em>automatically registered as a parameter when assigned as an attribute to a</em> <code>Module</code>.</li>
+<li><code>autograd.Function</code> - Implements <em>forward and backward definitions of an autograd operation</em>. Every <code>Tensor</code> operation creates at least a single <code>Function</code> node that connects to functions that created a <code>Tensor</code> and <em>encodes its history</em>.</li>
+</ul>
+<h2 id="gradient-clipping">gradient clipping</h2>
+<pre><code class="language-python">optimizer.zero_grad()
+loss.backward()
+
+# by value
+torch.nn.utils.clip_grad_value_(model.parameters(), clip_value=1)
+
+# by norm
+# torch.nn.utils.clip_grad_norm_(model.parameters(), clip_norm=1)
+
+optimizer.step()
+</code></pre>
+<ul>
+<li>Note that it stacks all the paremeters into a single vector then performs the clipping <ul>
+<li>we want to just clip the gradients from th</li>
+</ul>
+</li>
+</ul>
+<h2 id="hooks">hooks</h2>
+<ul>
+<li>tensor.backward() starts the backward pass on the computational graph with a default starting gradient value of 1.0</li>
+<li>allow us to inspect (and possibly change) gradients as they flow backwards through the graph </li>
+<li>hooks get called on tensors in the order they were added</li>
+<li><code>.retain_grad()</code> stores the grad on non-leaf/intermediate nodes in the computational graph</li>
+<li>when adding hooks to a intermediate node in the forward graph (stored in the backward_hooks dict), the function will also be added as a pre-hook to the corresponding node in the backwards graph to be run on the gradient before the node does its thing</li>
+</ul>
+<pre><code class="language-python">def fn(grad):
+  print(grad)
+  return grad + 2 # if you return nothing, the same gradient as before will be used
+
+c.register_hook(fn)
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

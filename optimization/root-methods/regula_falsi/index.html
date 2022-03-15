@@ -6,16 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/optimization/func_approx/">
-        <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Function Approximation - ML Notebook</title>
-        <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/optimization/root-methods/regula_falsi/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Regula Falsi - ML Notebook</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
-        <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../..">ML Notebook</a>
+                <a class="navbar-brand" href="../../..">ML Notebook</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -34,26 +34,56 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="../.." class="nav-link">Home</a>
+                                <a href="../../.." class="nav-link">Home</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../machine_learning/map/" class="dropdown-item">Map of ML</a>
+    <a href="../../../machine_learning/supervised_learning/" class="dropdown-item">Supervised Learning</a>
 </li>
                                     
 <li>
-    <a href="../../machine_learning/supervised_learning/" class="dropdown-item">Supervised Learning</a>
+    <a href="../../../machine_learning/regression/" class="dropdown-item">Regression</a>
 </li>
                                     
 <li>
-    <a href="../../machine_learning/activation_functions/" class="dropdown-item">Activation Functions</a>
+    <a href="../../../machine_learning/classification/" class="dropdown-item">Classification</a>
 </li>
                                     
 <li>
-    <a href="../../machine_learning/reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
+    <a href="../../../machine_learning/optimization/" class="dropdown-item">Optimization Techniques</a>
+</li>
+                                    
+<li>
+    <a href="../../../machine_learning/feature_scaling/" class="dropdown-item">Feature Scaling</a>
+</li>
+                                    
+<li>
+    <a href="../../../machine_learning/model_selection/" class="dropdown-item">Model Selection</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Neural Networks</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../../machine_learning/nn/activation_functions/" class="dropdown-item">Activation Functions</a>
+</li>
+            
+<li>
+    <a href="../../../machine_learning/nn/pytorch/" class="dropdown-item">PyTorch</a>
+</li>
+            
+<li>
+    <a href="../../../machine_learning/nn/auto_encoders/" class="dropdown-item">AutoEncoders</a>
+</li>
+    </ul>
+  </li>
+                                    
+<li>
+    <a href="../../../machine_learning/reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
 </li>
                                 </ul>
                             </li>
@@ -62,15 +92,37 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../overview/" class="dropdown-item">Overview</a>
+    <a href="../../overview/" class="dropdown-item">Overview</a>
 </li>
                                     
 <li>
-    <a href="../mpc/" class="dropdown-item">Model Predictive Control</a>
+    <a href="../../convergence/" class="dropdown-item">Convergence</a>
 </li>
                                     
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Root Finding methods</a>
+    <ul class="dropdown-menu">
+            
 <li>
-    <a href="./" class="dropdown-item active">Function Approximation</a>
+    <a href="../newtons/" class="dropdown-item">Newtons Method</a>
+</li>
+            
+<li>
+    <a href="../secant/" class="dropdown-item">Secant Method</a>
+</li>
+            
+<li>
+    <a href="../bisection/" class="dropdown-item">Bisection</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">Regula Falsi</a>
+</li>
+    </ul>
+  </li>
+                                    
+<li>
+    <a href="../../mpc/" class="dropdown-item">Model Predictive Control</a>
 </li>
                                 </ul>
                             </li>
@@ -83,12 +135,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../mpc/" class="nav-link">
+                                <a rel="prev" href="../bisection/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../../mpc/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -110,8 +162,24 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#function-approximation" class="nav-link">Function Approximation</a>
+            <li class="nav-item" data-level="1"><a href="#regula-falsi" class="nav-link">Regula Falsi</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#method" class="nav-link">Method</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#convergence" class="nav-link">Convergence</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pros" class="nav-link">Pros</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#cons" class="nav-link">Cons</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -119,7 +187,67 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="function-approximation">Function Approximation</h1></div>
+<h1 id="regula-falsi">Regula Falsi</h1>
+<ul>
+<li>Known as the method of false position </li>
+<li>Only uses <script type="math/tex">g</script>
+</li>
+<li>Bracketing method like Bisection to guaranteed to converge</li>
+</ul>
+<h2 id="method">Method</h2>
+<ol>
+<li>
+<p>Construct a secant line using the the two interval endpoints</p>
+<ul>
+<li>Approximates <script type="math/tex">g</script>
+</li>
+<li>
+<script type="math/tex">l_k(x) = g(a_k) + \frac{g(b_k) - g(a_k)}{b_k - a_k}(x - a_k)</script>
+</li>
+</ul>
+</li>
+<li>
+<p>Find the root of the line</p>
+<ul>
+<li>
+<script type="math/tex">c_k = \frac{a_k g(b_k) - b_k g(a_k)}{g(b_k) - g(a_k)}</script>
+</li>
+</ul>
+</li>
+<li>
+<p>Determine the next subinterval <script type="math/tex">[a_{k+1}, b_{k+1}]</script>:</p>
+<ul>
+<li>
+<p>If <script type="math/tex">g(a_k) g(c_k) < 0</script> then <script type="math/tex">a_{k+1} = a_k</script> and <script type="math/tex">b_{k+1} = c_k</script>
+</p>
+</li>
+<li>
+<p>If <script type="math/tex">g(b_k) g(c_k) < 0</script> then <script type="math/tex">a_{k+1} = c_k</script> and <script type="math/tex">b_{k+1} = b_k</script>
+</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="convergence">Convergence</h2>
+<ul>
+<li>Q-Linear convergence</li>
+<li>
+<script type="math/tex">c</script> depends on the curvature of <script type="math/tex">g</script> and how close <script type="math/tex">a_0</script> is to <script type="math/tex">x^*</script>
+<ul>
+<li>Since we are using a linear approximation of <script type="math/tex">g</script>, less curvature = faster convergence</li>
+</ul>
+</li>
+</ul>
+<h2 id="pros">Pros</h2>
+<ul>
+<li>Reliable given the interval encloses <script type="math/tex">x^*</script>
+</li>
+</ul>
+<h2 id="cons">Cons</h2>
+<ul>
+<li>Slow convergence with a constant that depends on the curvature of <script type="math/tex">g</script>
+</li>
+</ul></div>
             </div>
         </div>
 
@@ -128,12 +256,12 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "../..",
+            var base_url = "../../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../../js/base.js" defer></script>
+        <script src="../../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
-        <script src="../../search/main.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

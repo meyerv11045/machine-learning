@@ -41,16 +41,46 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../machine_learning/map/" class="dropdown-item">Map of ML</a>
-</li>
-                                    
-<li>
     <a href="../../machine_learning/supervised_learning/" class="dropdown-item">Supervised Learning</a>
 </li>
                                     
 <li>
-    <a href="../../machine_learning/activation_functions/" class="dropdown-item">Activation Functions</a>
+    <a href="../../machine_learning/regression/" class="dropdown-item">Regression</a>
 </li>
+                                    
+<li>
+    <a href="../../machine_learning/classification/" class="dropdown-item">Classification</a>
+</li>
+                                    
+<li>
+    <a href="../../machine_learning/optimization/" class="dropdown-item">Optimization Techniques</a>
+</li>
+                                    
+<li>
+    <a href="../../machine_learning/feature_scaling/" class="dropdown-item">Feature Scaling</a>
+</li>
+                                    
+<li>
+    <a href="../../machine_learning/model_selection/" class="dropdown-item">Model Selection</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Neural Networks</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../machine_learning/nn/activation_functions/" class="dropdown-item">Activation Functions</a>
+</li>
+            
+<li>
+    <a href="../../machine_learning/nn/pytorch/" class="dropdown-item">PyTorch</a>
+</li>
+            
+<li>
+    <a href="../../machine_learning/nn/auto_encoders/" class="dropdown-item">AutoEncoders</a>
+</li>
+    </ul>
+  </li>
                                     
 <li>
     <a href="../../machine_learning/reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
@@ -66,11 +96,33 @@
 </li>
                                     
 <li>
-    <a href="../mpc/" class="dropdown-item">Model Predictive Control</a>
+    <a href="../convergence/" class="dropdown-item">Convergence</a>
 </li>
                                     
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Root Finding methods</a>
+    <ul class="dropdown-menu">
+            
 <li>
-    <a href="../func_approx/" class="dropdown-item">Function Approximation</a>
+    <a href="../root-methods/newtons/" class="dropdown-item">Newtons Method</a>
+</li>
+            
+<li>
+    <a href="../root-methods/secant/" class="dropdown-item">Secant Method</a>
+</li>
+            
+<li>
+    <a href="../root-methods/bisection/" class="dropdown-item">Bisection</a>
+</li>
+            
+<li>
+    <a href="../root-methods/regula_falsi/" class="dropdown-item">Regula Falsi</a>
+</li>
+    </ul>
+  </li>
+                                    
+<li>
+    <a href="../mpc/" class="dropdown-item">Model Predictive Control</a>
 </li>
                                 </ul>
                             </li>
@@ -88,7 +140,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../mpc/" class="nav-link">
+                                <a rel="next" href="../convergence/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -136,6 +188,22 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#constraints" class="nav-link">Constraints</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#slack-variable" class="nav-link">Slack Variable</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#-a-variable-added-to-an-inequality-constraint-to-transform-it-into-an-equality" class="nav-link">- A variable added to an inequality constraint to transform it into an equality</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#lagrange-multipliers" class="nav-link">Lagrange Multipliers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -178,7 +246,45 @@ subject to the contraints:
 <p><img alt="PWA of Function" src="../static/PWA-of-real.png" /></p>
 <p>While the picture above shows the PWA given a known function, PWAs are most often used when there is a set of datapoints representing the functions inputs and outputs. The task is then to construct a PWA from the data such that it best approximates the true function that is mapping the inputs to the outputs.
 <img alt="PWA from Data" src="../static/PWA-from-data.png" /></p>
-<p>Once you have a PWA made from your dataset, you can then make predictions on new inputs as to what the true function would map to.</p></div>
+<p>Once you have a PWA made from your dataset, you can then make predictions on new inputs as to what the true function would map to.</p>
+<hr />
+<h2 id="constraints">Constraints</h2>
+<ul>
+<li>A constraint is a condition of an optimization problem that the solution must satisfy</li>
+<li><strong>Feasible Set</strong>- is the set of candidate solutions that satisfy all constraints<ul>
+<li>A point is <strong>infeasible</strong> if it does not satisfy a constraint</li>
+</ul>
+</li>
+<li>A constraint is <strong>binding</strong> if an inequality constraint holds with equality at the optimal point<ul>
+<li>i.e. the point is at the edge of the feasible set and cannot move anymore in the direction of the constraint, even if doing so would improve the value of the objective function, since it would move outside the feasible set</li>
+</ul>
+</li>
+<li>A constraint is <strong>non-binding</strong> if the point could be moved in the direction of the constraint<ul>
+<li>i.e. the point is not at the edge of the feasible set and can be moved more in the direction of the constraint, however doing so would not be optimal </li>
+<li>This can mean under certain conditions that the optimization problem would have the same solution in the absence of the constraint since the objective function's minimum does not push up against the edge of the feasible set</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h2 id="slack-variable">Slack Variable</h2>
+<h2 id="-a-variable-added-to-an-inequality-constraint-to-transform-it-into-an-equality">- A variable added to an inequality constraint to transform it into an equality</h2>
+<ul>
+<li>If the slack variable for a constraint is zero at a point, the constraint is binding there</li>
+<li>If the slack variable for a constraint is positive at a point, the constraint is non-binding there</li>
+<li>If the slack variable for a constraint is negative at a point, the point is infeasible as it does not satisfy the constraint (can be thought of as outside the feasible set)<ul>
+<li>Slack variables can never be negative for most interior point and simplex solvers </li>
+</ul>
+</li>
+<li>For example, introducing the slack variable <script type="math/tex">y \geq 0</script>, the inequality constraint of <script type="math/tex">Ax \leq b</script> can be transformed into an equality of <script type="math/tex">Ax + y = b</script>
+</li>
+<li>Intuition: slack can be thought of like a distance from a candidate solution to the constraint boundary (<script type="math/tex">y = Ax - b</script>)</li>
+<li>A constraint of <script type="math/tex">Ax > b</script> will be transformed into two constraints of <script type="math/tex">s = Ax - b</script> and <script type="math/tex">s > 0</script> that is used by most solvers</li>
+</ul>
+<hr />
+<h2 id="lagrange-multipliers">Lagrange Multipliers</h2>
+<ul>
+<li>KKT conditions generalize the method of lagrange multipliers and allow inequality constraints</li>
+</ul></div>
             </div>
         </div>
 

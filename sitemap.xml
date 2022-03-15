@@ -2,42 +2,107 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://meyerv11045.github.com/machine-learning/</loc>
-         <lastmod>2021-10-08</lastmod>
+         <lastmod>2022-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://meyerv11045.github.com/machine-learning/machine_learning/activation_functions/</loc>
-         <lastmod>2021-10-08</lastmod>
+         <loc>https://meyerv11045.github.com/machine-learning/svms/</loc>
+         <lastmod>2022-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://meyerv11045.github.com/machine-learning/machine_learning/map/</loc>
-         <lastmod>2021-10-08</lastmod>
+         <loc>https://meyerv11045.github.com/machine-learning/machine_learning/classification/</loc>
+         <lastmod>2022-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/machine_learning/feature_scaling/</loc>
+         <lastmod>2022-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/machine_learning/model_selection/</loc>
+         <lastmod>2022-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/machine_learning/optimization/</loc>
+         <lastmod>2022-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/machine_learning/regression/</loc>
+         <lastmod>2022-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://meyerv11045.github.com/machine-learning/machine_learning/reinforcement_learning/</loc>
-         <lastmod>2021-10-08</lastmod>
+         <lastmod>2022-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/machine_learning/statistical_learning/</loc>
+         <lastmod>2022-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://meyerv11045.github.com/machine-learning/machine_learning/supervised_learning/</loc>
-         <lastmod>2021-10-08</lastmod>
+         <lastmod>2022-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://meyerv11045.github.com/machine-learning/optimization/func_approx/</loc>
-         <lastmod>2021-10-08</lastmod>
+         <loc>https://meyerv11045.github.com/machine-learning/machine_learning/nn/activation_functions/</loc>
+         <lastmod>2022-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/machine_learning/nn/auto_encoders/</loc>
+         <lastmod>2022-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/machine_learning/nn/pytorch/</loc>
+         <lastmod>2022-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/optimization/convergence/</loc>
+         <lastmod>2022-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/optimization/method-template/</loc>
+         <lastmod>2022-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://meyerv11045.github.com/machine-learning/optimization/mpc/</loc>
-         <lastmod>2021-10-08</lastmod>
+         <lastmod>2022-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://meyerv11045.github.com/machine-learning/optimization/overview/</loc>
-         <lastmod>2021-10-08</lastmod>
+         <lastmod>2022-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/optimization/root-methods/bisection/</loc>
+         <lastmod>2022-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/optimization/root-methods/newtons/</loc>
+         <lastmod>2022-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/optimization/root-methods/regula_falsi/</loc>
+         <lastmod>2022-03-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://meyerv11045.github.com/machine-learning/optimization/root-methods/secant/</loc>
+         <lastmod>2022-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

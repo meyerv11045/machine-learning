@@ -41,16 +41,46 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../map/" class="dropdown-item">Map of ML</a>
-</li>
-                                    
-<li>
     <a href="../supervised_learning/" class="dropdown-item">Supervised Learning</a>
 </li>
                                     
 <li>
-    <a href="../activation_functions/" class="dropdown-item">Activation Functions</a>
+    <a href="../regression/" class="dropdown-item">Regression</a>
 </li>
+                                    
+<li>
+    <a href="../classification/" class="dropdown-item">Classification</a>
+</li>
+                                    
+<li>
+    <a href="../optimization/" class="dropdown-item">Optimization Techniques</a>
+</li>
+                                    
+<li>
+    <a href="../feature_scaling/" class="dropdown-item">Feature Scaling</a>
+</li>
+                                    
+<li>
+    <a href="../model_selection/" class="dropdown-item">Model Selection</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Neural Networks</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../nn/activation_functions/" class="dropdown-item">Activation Functions</a>
+</li>
+            
+<li>
+    <a href="../nn/pytorch/" class="dropdown-item">PyTorch</a>
+</li>
+            
+<li>
+    <a href="../nn/auto_encoders/" class="dropdown-item">AutoEncoders</a>
+</li>
+    </ul>
+  </li>
                                     
 <li>
     <a href="./" class="dropdown-item active">Reinforcement Learning</a>
@@ -66,11 +96,33 @@
 </li>
                                     
 <li>
-    <a href="../../optimization/mpc/" class="dropdown-item">Model Predictive Control</a>
+    <a href="../../optimization/convergence/" class="dropdown-item">Convergence</a>
 </li>
                                     
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Root Finding methods</a>
+    <ul class="dropdown-menu">
+            
 <li>
-    <a href="../../optimization/func_approx/" class="dropdown-item">Function Approximation</a>
+    <a href="../../optimization/root-methods/newtons/" class="dropdown-item">Newtons Method</a>
+</li>
+            
+<li>
+    <a href="../../optimization/root-methods/secant/" class="dropdown-item">Secant Method</a>
+</li>
+            
+<li>
+    <a href="../../optimization/root-methods/bisection/" class="dropdown-item">Bisection</a>
+</li>
+            
+<li>
+    <a href="../../optimization/root-methods/regula_falsi/" class="dropdown-item">Regula Falsi</a>
+</li>
+    </ul>
+  </li>
+                                    
+<li>
+    <a href="../../optimization/mpc/" class="dropdown-item">Model Predictive Control</a>
 </li>
                                 </ul>
                             </li>
@@ -83,7 +135,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../activation_functions/" class="nav-link">
+                                <a rel="prev" href="../nn/auto_encoders/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -110,53 +162,48 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
+            <li class="nav-item" data-level="1"><a href="#reinforcement-learning" class="nav-link">Reinforcement Learning</a>
+              <ul class="nav flex-column">
             <li class="nav-item" data-level="2"><a href="#core-concepts" class="nav-link">Core Concepts:</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
             <li class="nav-item" data-level="2"><a href="#rewards" class="nav-link">Rewards</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
             <li class="nav-item" data-level="2"><a href="#values" class="nav-link">Values</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
             <li class="nav-item" data-level="2"><a href="#actions" class="nav-link">Actions</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
             <li class="nav-item" data-level="2"><a href="#action-values" class="nav-link">Action Values</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
             <li class="nav-item" data-level="2"><a href="#agent-components" class="nav-link">Agent Components</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
             <li class="nav-item" data-level="2"><a href="#state" class="nav-link">State</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
             <li class="nav-item" data-level="2"><a href="#markov-decision-processes" class="nav-link">Markov Decision Processes</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
             <li class="nav-item" data-level="2"><a href="#policy" class="nav-link">Policy</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
             <li class="nav-item" data-level="2"><a href="#value-function" class="nav-link">Value Function:</a>
               <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -164,9 +211,14 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p><strong>Reinforcement Learning</strong>- the science of learning to make decisions from interaction</p>
+<h1 id="reinforcement-learning">Reinforcement Learning</h1>
 <ul>
-<li>Differs from other machine learning paradigms in that:</li>
+<li>
+<p>The science of learning to make decisions from interaction</p>
+</li>
+<li>
+<p>Differs from other machine learning paradigms in that:</p>
+</li>
 <li>No supervision, only a reward signal</li>
 <li>Feedback can be delayed, not instantaneous</li>
 <li>Time matters</li>
@@ -314,14 +366,21 @@
 </ul>
 <h2 id="value-function">Value Function:</h2>
 <ul>
-<li>The actual value function is the expected return</li>
-</ul>
+<li>
+<p>The actual value function is the expected return</p>
+<ul>
+<li>
 <p>
 <script type="math/tex">V_\pi(s)=E[G_t|S_t=s,\pi]</script>
 </p>
-<p>​     <script type="math/tex"> = E[R_{t+1}+\gamma R_{t+2}+\gamma^2R_{t+3}+... | S_t = s,\pi]</script>
+</li>
+<li>
+<p>
+<script type="math/tex"> = E[R_{t+1}+\gamma R_{t+2}+\gamma^2R_{t+3}+... | S_t = s,\pi]</script>
 </p>
-<ul>
+</li>
+</ul>
+</li>
 <li>
 <p>The return has a recursive form since <script type="math/tex">G_t = R_{t+1}+\gamma G_{t+1}</script>
 </p>
@@ -345,7 +404,6 @@
 <li>
 <p>Can be used to select btw actions</p>
 </li>
-<li></li>
 </ul></div>
             </div>
         </div>

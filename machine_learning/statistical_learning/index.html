@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/supervised_learning/">
+        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/statistical_learning/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Supervised Learning - ML Notebook</title>
+        <title>Statistical Learning - ML Notebook</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -36,12 +36,12 @@
                             <li class="navitem">
                                 <a href="../.." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Supervised Learning</a>
+    <a href="../supervised_learning/" class="dropdown-item">Supervised Learning</a>
 </li>
                                     
 <li>
@@ -134,16 +134,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../.." class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../regression/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -162,13 +152,26 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#supervised-learning" class="nav-link">Supervised Learning</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#function-approximation" class="nav-link">Function Approximation</a>
+            <li class="nav-item" data-level="1"><a href="#statistical-learning" class="nav-link">Statistical Learning</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#resources" class="nav-link">Resources</a>
+            
+            <li class="nav-item" data-level="1"><a href="#fitting-linear-models" class="nav-link">Fitting Linear Models</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#least-squares" class="nav-link">Least Squares</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#k-nearest-neighbor" class="nav-link">k-nearest neighbor</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#summary" class="nav-link">Summary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#model-selection-cross-validation" class="nav-link">model selection &amp; cross validation</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -179,24 +182,141 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="supervised-learning">Supervised Learning</h1>
+<h1 id="statistical-learning">Statistical Learning</h1>
 <ul>
-<li>Regression- predicting continuous values</li>
-<li>Classification- predicting discrete values</li>
+<li>Supervised Learning- building a statistical model for prediting/estimating an ouput based on some inputs. Basically is function approximation</li>
+<li>Regression- predicting continuous or quantitative outputs<ul>
+<li>Least squares was the earliest form</li>
 </ul>
-<h2 id="function-approximation">Function Approximation</h2>
-<p>Function approximation is a technique for estimating an unknown underyling function using observations from the domain and their resulting image.</p>
-<p>Given a dataset of inputs and outputs, we can assume there is an unkwnown underyling function that maps the inputs to the outputs. We can use supervised learning techniques to approximate this function.</p>
-<p>Supervised learning achieves this by minimizing the error between predicted outputs and expected outputs from the domain by changing its parameters (the weights of the network).</p>
-<p>Thus, simple feedforward neural networks can be better thought of as function approximators rather than models of how the brain works.</p>
-<p>The true function mapping inputs to outputs is referred to as the <strong>target function</strong> since it is the target of the learning process.</p>
-<p>Thus, intuitively we can better get a sense of what the function is by observing more input-output data points.</p>
-<p>The universal approximation theorem states a feedforward NN with a linear output layer and at least 1 hidden layer with a nonlinear activation function can approximate any function mapping between two finite dimensional spaces with any desired non-zero amount of error (provided enough hidden units).</p>
-<p>Below is an example of <script type="math/tex">y=x^2</script> being approximated by a simple feedforward NN with 2 hidden layers of 10 nodes with relu activation trained on 100 observations:
-<img alt="Example Approximation" src="https://machinelearningmastery.com/wp-content/uploads/2019/12/Scatter-Plot-of-Input-vs-Actual-and-Predicted-Values-for-the-Neural-Net-Approximation.png" />.</p>
-<h2 id="resources">Resources</h2>
+</li>
+<li>Classifiction- predicting discrete/categorial or qualitative outputs<ul>
+<li>Linear discriminant analysis was the earliest form</li>
+</ul>
+</li>
+<li>Unsupervised Learning- learn the relationships and strucuture from input data</li>
+<li>
+<p>Clustering- want to group datapoints according to similarity</p>
+</li>
+<li>
+<p>Generalized Linear Model- describes a class of stat learning methods including both linear and logistic regression</p>
+</li>
+<li>Only linear methods were used till the 80s becuase non-linear relationships were too computationally expensive to fit at the time</li>
+<li>In the 80s, computational power was sufficient for nonlinear methods to flourish </li>
+<li>Classification and Regression trees</li>
+<li>Generalized additive models</li>
+<li>Neural Networks</li>
+<li>Support Vector Machines (90s)</li>
+<li>In stat learning, inputs are referred to as predictors or independent vars (inputs/features in ML/CS)</li>
+<li>outputs are responses or dependent variables (ouputs/target in ML)</li>
+</ul>
+<h1 id="fitting-linear-models">Fitting Linear Models</h1>
+<p>Let there be <script type="math/tex">n</script> datapoints where each datapoint has <script type="math/tex">m</script> features.</p>
+<p>We want to find the optimal parameters for <script type="math/tex">f(x) = a_0 + \sum_{i=1}^m a_i x_i  </script>.</p>
 <ul>
-<li><a href="https://machinelearningmastery.com/neural-networks-are-function-approximators/">Function Approximators</a></li>
+<li>
+<p>Linear regression of single var: model for making predictions is a line in 2D</p>
+</li>
+<li>
+<p>of 2 vars: model is a plane in 3D (for nonlinear models it would be a mesh/surface)</p>
+</li>
+<li>
+<p>of m vars: model is a hyperplane in the m+1 dimensional input-output space</p>
+</li>
+</ul>
+<h2 id="least-squares">Least Squares</h2>
+<ul>
+<li>Makes huge assumptions about structure of data and yields stable but possibly inaccurate predictions</li>
+<li>relies heavily on assumption that a linear model/decision boundary is appropriate</li>
+<li>low variance, high bias</li>
+<li>We fit a linear model to a set of training data by minimizing a cost function defined by the residual sum of squares RSS</li>
+<li>
+<script type="math/tex">RSS(\theta) = \sum_{i=1}^n(y_i - x_i^T\theta)^2</script>
+</li>
+<li>Vectorized:</li>
+<li>We can take the gradient of the cost function, set equal to zero and then solve for the parameters</li>
+<li>This way of computing the optimal paramters for a linear model is known as the normal equation</li>
+<li>Instead of the normal equation, could use gradient descent algorithm to iteratively find the minimum of the quadratic cost function</li>
+</ul>
+<h2 id="k-nearest-neighbor">k-nearest neighbor</h2>
+<ul>
+<li>Makes very mild assumptions about structure of data and yields unstable but accurate predictions</li>
+<li>no assumptions on the underlying data like in least squares resulting in wiggly, unstable decision boundaries that depend on only a handful of neighboring points</li>
+<li>high variance, low bias </li>
+<li>Uses observations in the training set closest to the input to create predictions</li>
+<li>
+<script type="math/tex; mode=display">h(x) = \frac{1}{k}\sum_{x_i \in N_k(x)} y_i</script>
+<ul>
+<li>
+<script type="math/tex">N_k(x)</script> is the neighborhood of <script type="math/tex">x</script> defined by the closest <script type="math/tex">k</script> points <script type="math/tex">x_i</script> in the training set</li>
+<li>Prediction is just the average of the k-closest datapoints in the training set</li>
+</ul>
+</li>
+<li>How do we define closeness in building the neighborhood?<ul>
+<li>Euclidean distance is nice</li>
+</ul>
+</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>these two techniques are very popular (e.g. 1-nearest-neighbor is most used technique in low-dim problems)</li>
+<li>advancements/improvements:<ul>
+<li>kernel methods use weights that decrease smoothly to zero as the distance increases from the target point (rather than the abrupt 0/1 used by k-nearest neighbors)</li>
+<li>distance kernels are modified to emphasize some variables more than others in high dimensional spaces</li>
+<li>Local regression fits linear models by locally weighted least squares</li>
+<li>Linear models fit to an expanded basis of the original inputs allow arbitrarily complex models</li>
+<li>idk why you would ever want this</li>
+<li>neural networks constist of sums of nonlinearly transformed linear models</li>
+</ul>
+</li>
+</ul>
+<h2 id="model-selection-cross-validation">model selection &amp; cross validation</h2>
+<ul>
+<li>Given a good model for our training data, is the prediction's error on unseen data good or bad?</li>
+<li>k-fold cross validation<ul>
+<li>better than simple train test split for estimating model prediction error</li>
+<li>divide dataset into k-sets </li>
+<li>For each subset:</li>
+<li>use it once as a test set and the other k-1 sets for training and record the results</li>
+<li>discard the model and start over again</li>
+<li>End result is <script type="math/tex">k</script> performance measures which can be averaged to get the models overall performance</li>
+<li>gives insight into which <script type="math/tex">d</script> is best for polynomial fit</li>
+<li>Common <script type="math/tex">k = \{2, 5, 10\}</script>
+</li>
+<li>better than hold-out </li>
+</ul>
+</li>
+<li>leave one out cross validation (k = m)<ul>
+<li>useful when m is small </li>
+<li>k = 5 or 10 is a good compromise</li>
+</ul>
+</li>
+<li>select d based on training and validation best performer (hold out the test data)<ul>
+<li>train final model on training + validation data and then measure performance on testing data</li>
+</ul>
+</li>
+<li>Training Set: fit model to best parameters</li>
+<li>Validation Set: evaluate model with MSE</li>
+<li>
+<p>At the end, retrain and measure performance with test set</p>
+</li>
+<li>
+<p>split into train and test set </p>
+<ul>
+<li>hold out test set for final evaluation (never used for training/model updates)</li>
+<li>variety of models with diff hyperparams train on training data and evaluate with validation data</li>
+<li>once the best model hyperparams have been selected, train on the training and validation data</li>
+<li>evaluate final model with test data that has never been seen before</li>
+</ul>
+</li>
+<li>
+<p>train, val, test = 60%, 20%, 20% of dataset </p>
+</li>
+<li>
+<p>as you increase <script type="math/tex">d</script> meaning the polynomial becomes more complex, it is able to fit the data better so the training loss will continue going down as <script type="math/tex">d</script> increses since essentially you reach a point where the curve is overfitting the data</p>
+<ul>
+<li>comparing the train loss to the validation loss and picking the <script type="math/tex">d</script> with the minimum validation loss is the best</li>
+</ul>
+</li>
 </ul></div>
             </div>
         </div>

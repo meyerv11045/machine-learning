@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/supervised_learning/">
+        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/model_selection/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Supervised Learning - ML Notebook</title>
+        <title>Model Selection - ML Notebook</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -41,7 +41,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Supervised Learning</a>
+    <a href="../supervised_learning/" class="dropdown-item">Supervised Learning</a>
 </li>
                                     
 <li>
@@ -61,7 +61,7 @@
 </li>
                                     
 <li>
-    <a href="../model_selection/" class="dropdown-item">Model Selection</a>
+    <a href="./" class="dropdown-item active">Model Selection</a>
 </li>
                                     
   <li class="dropdown-submenu">
@@ -135,12 +135,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../.." class="nav-link">
+                                <a rel="prev" href="../feature_scaling/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../regression/" class="nav-link">
+                                <a rel="next" href="../nn/activation_functions/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -162,9 +162,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#supervised-learning" class="nav-link">Supervised Learning</a>
+            <li class="nav-item" data-level="1"><a href="#model-selection" class="nav-link">Model Selection</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#function-approximation" class="nav-link">Function Approximation</a>
+            <li class="nav-item" data-level="2"><a href="#cross-validation" class="nav-link">Cross Validation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#feature-selection" class="nav-link">Feature Selection</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -179,24 +183,153 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="supervised-learning">Supervised Learning</h1>
+<h1 id="model-selection">Model Selection</h1>
 <ul>
-<li>Regression- predicting continuous values</li>
-<li>Classification- predicting discrete values</li>
+<li>Learning algorithms have many different hyperparameters that can be tuned</li>
+<li>We want to select the hyperparameters that lead to the best models</li>
+<li>We utilize algorithms to perform an optimizing search in the space of possible models to determine the bset one</li>
+<li>Given a set of models <script type="math/tex">M = \{M_1, \dots \}</script>
+</li>
 </ul>
-<h2 id="function-approximation">Function Approximation</h2>
-<p>Function approximation is a technique for estimating an unknown underyling function using observations from the domain and their resulting image.</p>
-<p>Given a dataset of inputs and outputs, we can assume there is an unkwnown underyling function that maps the inputs to the outputs. We can use supervised learning techniques to approximate this function.</p>
-<p>Supervised learning achieves this by minimizing the error between predicted outputs and expected outputs from the domain by changing its parameters (the weights of the network).</p>
-<p>Thus, simple feedforward neural networks can be better thought of as function approximators rather than models of how the brain works.</p>
-<p>The true function mapping inputs to outputs is referred to as the <strong>target function</strong> since it is the target of the learning process.</p>
-<p>Thus, intuitively we can better get a sense of what the function is by observing more input-output data points.</p>
-<p>The universal approximation theorem states a feedforward NN with a linear output layer and at least 1 hidden layer with a nonlinear activation function can approximate any function mapping between two finite dimensional spaces with any desired non-zero amount of error (provided enough hidden units).</p>
-<p>Below is an example of <script type="math/tex">y=x^2</script> being approximated by a simple feedforward NN with 2 hidden layers of 10 nodes with relu activation trained on 100 observations:
-<img alt="Example Approximation" src="https://machinelearningmastery.com/wp-content/uploads/2019/12/Scatter-Plot-of-Input-vs-Actual-and-Predicted-Values-for-the-Neural-Net-Approximation.png" />.</p>
+<h2 id="cross-validation">Cross Validation</h2>
+<h3 id="hold-out-simple">Hold-Out (Simple)</h3>
+<ul>
+<li>
+<p>Hold-out cross validation (aka simple cross validation):</p>
+<ol>
+<li>Randomly slit the train set <script type="math/tex">S</script> into a <script type="math/tex">S_{train}</script> and <script type="math/tex">S_{cv}</script> (the hold-out cross validation set)</li>
+<li>Train each model <script type="math/tex">M_i</script> on <script type="math/tex">S_{train}</script> to get a hypothesis <script type="math/tex">h_i</script>
+</li>
+<li>Select <script type="math/tex">h_i</script> with the smallest error on the hold out cross validation set <script type="math/tex">S_{cv}</script>
+</li>
+</ol>
+</li>
+<li>
+<p>Can optionally retrain the best model <script type="math/tex">h_i</script> on the entire train set <script type="math/tex">S</script>
+</p>
+<ul>
+<li>Even then, we are still selecting best model based on <script type="math/tex">0.8m</script> training examples rather than <script type="math/tex">m</script>
+</li>
+</ul>
+</li>
+<li>Wastes some of the dataset on holding out- bad for situations with scare data (e.g. <script type="math/tex">m =20</script>)</li>
+</ul>
+<h3 id="k-fold">k-fold</h3>
+<ul>
+<li>
+<p>Holds out less data compared to simple cv</p>
+</li>
+<li>
+<p>Randomly split train set <script type="math/tex">S</script> into <script type="math/tex">k</script> disjoint subsets <script type="math/tex">S_1, \dots, S_k</script> of <script type="math/tex">m / k</script> training examples each</p>
+</li>
+<li>For each model <script type="math/tex">M_i</script> evaluate:<ul>
+<li>for each of the <script type="math/tex">k</script> folds, hold out <script type="math/tex">S_j</script> and train the model on all the other folds</li>
+<li>test the hypothesis <script type="math/tex">h_{ij}</script> on <script type="math/tex">S_j</script> to get the error</li>
+<li>the estimated generalization error of model <script type="math/tex">M_i</script> is the average of the errors over each if the <script type="math/tex">k</script> tests</li>
+</ul>
+</li>
+<li>
+<p>Pick the model <script type="math/tex">M_i</script> with the lowest estimated generalization error and retrain the model on the entire training set <script type="math/tex">S</script>. The resulting hypothesis is our final output</p>
+</li>
+<li>
+<p>Typical choice is <script type="math/tex">k =10</script>
+</p>
+</li>
+<li>Computationally more expensive than hold-out since we need to train <em>each</em> model <script type="math/tex">k</script> times </li>
+</ul>
+<h3 id="leave-one-out">leave-one-out</h3>
+<ul>
+<li>Useful for when data is scare</li>
+<li>Perform k-fold cross validation where <script type="math/tex">k = m</script> in order to leave out as little data as possible each time</li>
+<li>Holds out one training example each time and then averages together the resulting <script type="math/tex">m = k</script> errors to get an estimate for the generalization error of a model</li>
+</ul>
+<h2 id="feature-selection">Feature Selection</h2>
+<ul>
+<li>If <script type="math/tex">n >> m</script>, its best to reduce the number of features to learn from</li>
+<li>Reducing the number of input variables to produce simpler models<ul>
+<li>simpler models = more explainable since decisions are made based on less features</li>
+</ul>
+</li>
+<li>Reduces overfitting</li>
+<li>Reduces training time/compute time</li>
+<li>For <script type="math/tex">n</script> features, there are <script type="math/tex">2^n</script> possible feature subsets<ul>
+<li>Each of the <script type="math/tex">n</script> features can be included or excluded from the subset </li>
+</ul>
+</li>
+<li>Feature selection can be viewed as a model selection problem over <script type="math/tex">2^n</script> possible models</li>
+<li>For large <script type="math/tex">n</script>, its too expensive to compare all <script type="math/tex">2^n</script> models explicitly <ul>
+<li>Therefore, a heuristic search procedure is used to find a good feature subset</li>
+</ul>
+</li>
+</ul>
+<h3 id="wrapper">Wrapper</h3>
+<ul>
+<li>Procedure that wraps your learning algorithm</li>
+<li>Dependent on the algorithm you are selecting features for<ul>
+<li>Different learning algorithms may have different best features from the same wrapper algorithm</li>
+</ul>
+</li>
+<li>More computationally expensive <script type="math/tex">O(n^2)</script> calls to learning algorithm</li>
+</ul>
+<h4 id="forward-search">Forward Search</h4>
+<ul>
+<li>Makes assumption that best answer is a small set of features, likely those that come first<ul>
+<li>Order the features are specified in matters</li>
+</ul>
+</li>
+<li>Unable to remove feature</li>
+<li>Define feature set  <script type="math/tex">F = \empty</script> to be the indices of the features that matter</li>
+<li>Repeat until <script type="math/tex">|F| = n</script> or <script type="math/tex">|F| ></script> max features:<ul>
+<li>For each feature <script type="math/tex">i = 1, \dots, n</script>:<ul>
+<li>train a model using <script type="math/tex">F \cup \{i\}</script>
+</li>
+<li>measure the generalization using some version of cross validation</li>
+</ul>
+</li>
+<li>Set <script type="math/tex">F</script> to be the best feature subset found in the previous step</li>
+</ul>
+</li>
+</ul>
+<h4 id="backward-search">Backward Search</h4>
+<ul>
+<li>Makes assumption that best answer is a near full set of the features</li>
+<li>Spends most time checking large subsets</li>
+<li>Cannot reinstate removed features</li>
+<li>Define feature set  <script type="math/tex">F = \{1, \dots, n \}</script>
+</li>
+<li>Repeat until <script type="math/tex">|F| = \empty</script>:<ul>
+<li>For each feature <script type="math/tex">i = 1, \dots, n</script>:<ul>
+<li>train a model using <script type="math/tex">F \setminus \{i\}</script>
+</li>
+<li>measure the generalization using some version of cross validation</li>
+</ul>
+</li>
+<li>Set <script type="math/tex">F</script> to be the best feature subset found in the previous step</li>
+</ul>
+</li>
+</ul>
+<h3 id="filter">Filter</h3>
+<ul>
+<li>Computationally cheaper than wrapper method</li>
+<li>Compute a score on the data that measures the effectiveness </li>
+<li>Indepedent of the underyling learning algorithm in determining most important features</li>
+<li>Define some score <script type="math/tex">S(j)</script> which measure how informative feature <script type="math/tex">j</script> is for the output </li>
+<li>Choose the features with the largest scores</li>
+<li>This heuristic for selecting intital features can be used to select an initial set of features to use with forward and backward search</li>
+<li>Example heuristics:<ul>
+<li>mutual infromation</li>
+<li>absolute value of the correletion</li>
+</ul>
+</li>
+</ul>
+<h4 id="mutual-information">Mutual Information</h4>
+<ul>
+<li>Common scoring heuristic (especially for discrete-valued features)</li>
+<li>Can be expressed as Kullback-Leibler (KL) divergence which measures the difference between two probability distributions</li>
+</ul>
 <h2 id="resources">Resources</h2>
 <ul>
-<li><a href="https://machinelearningmastery.com/neural-networks-are-function-approximators/">Function Approximators</a></li>
+<li><a href="https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/">Feature Selection (ML Mastery)</a></li>
 </ul></div>
             </div>
         </div>
