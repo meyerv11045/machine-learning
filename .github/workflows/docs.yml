@@ -15,14 +15,23 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
+      
       - uses: actions/setup-python@v2
         with: 
           python-version: 3.8
+      
       - name: Setup Environment
         run: |
           pip install mkdocs
           pip install python-markdown-math
-      - name: Deploy Documentation
+      
+      - name: Build
         run: |
           cd docs
-          mkdocs gh-deploy
+          mkdocs build
+      
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: gh-pages
+          folder: site
