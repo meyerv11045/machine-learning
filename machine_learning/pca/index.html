@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/classification/">
+        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/pca/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Classification - ML Notebook</title>
+        <title>PCA - ML Notebook</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -49,7 +49,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">Classification</a>
+    <a href="../classification/" class="dropdown-item">Classification</a>
 </li>
                                     
 <li>
@@ -77,7 +77,7 @@
 </li>
                                     
 <li>
-    <a href="../pca/" class="dropdown-item">PCA</a>
+    <a href="./" class="dropdown-item active">PCA</a>
 </li>
                                     
 <li>
@@ -158,12 +158,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../regression/" class="nav-link">
+                                <a rel="prev" href="../regularization/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../dim_red/" class="nav-link">
+                                <a rel="next" href="../svms/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -185,29 +185,38 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#classification" class="nav-link">Classification</a>
+            <li class="nav-item" data-level="1"><a href="#singular-value-decomposition" class="nav-link">Singular Value Decomposition</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#logistic-regression" class="nav-link">Logistic Regression</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#softmaxmultinomial-logistic-regression" class="nav-link">Softmax/Multinomial Logistic Regression</a>
+            <li class="nav-item" data-level="2"><a href="#resources" class="nav-link">Resources</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#gaussian-discriminant-analysis" class="nav-link">Gaussian Discriminant Analysis</a>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#principal-component-analysis" class="nav-link">Principal Component Analysis</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#background-math-refresher" class="nav-link">Background Math Refresher</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#naive-bayes" class="nav-link">Naive Bayes</a>
+            <li class="nav-item" data-level="2"><a href="#covariance-perspective" class="nav-link">Covariance Perspective</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#support-vector-machines" class="nav-link">Support Vector Machines</a>
+            <li class="nav-item" data-level="2"><a href="#svd-perspective" class="nav-link">SVD Perspective</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#multiclass-classification" class="nav-link">Multiclass Classification</a>
+            <li class="nav-item" data-level="2"><a href="#optimization-perspective" class="nav-link">Optimization Perspective</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#applications" class="nav-link">Applications</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#resources_1" class="nav-link">Resources</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -218,82 +227,182 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="classification">Classification</h1>
-<h2 id="logistic-regression">Logistic Regression</h2>
-<h2 id="softmaxmultinomial-logistic-regression">Softmax/Multinomial Logistic Regression</h2>
+<h1 id="singular-value-decomposition">Singular Value Decomposition</h1>
 <ul>
-<li><a href="http://deeplearning.stanford.edu/tutorial/supervised/SoftmaxRegression/">Stanford UFLDL</a></li>
-<li>Learn after exam</li>
-</ul>
-<h2 id="gaussian-discriminant-analysis">Gaussian Discriminant Analysis</h2>
-<h2 id="naive-bayes">Naive Bayes</h2>
-<ul>
+<li>Allows us to decompose a data matrix <script type="math/tex">X \in \mathbb{R}^{n \times m}</script> into matrices <script type="math/tex">U \Sigma V^T</script>.</li>
 <li>
-<p>Features are discrete unlike the continue features in Gaussian Discriminant Analysis</p>
-</li>
-<li>
-<p>Ex: dictionary of words showing up in an email to classify whether it is spam </p>
-<ul>
-<li>
-<p>mispelled words in spam messages to try to get past these dictionaries of possible spam values</p>
-</li>
-<li>
-<p>the feature vector of words that show up in the desired dictionary is considered a bernoulli event model </p>
-</li>
-<li>
-<p>a multinomial event model takes into account the structure of the sentence or how the words appear in order to help prevent stuffing an email with a bunch of hidden good words that help the email get past the spam filter using a bernoulli event model</p>
-<ul>
-<li>naive bayes is no longer valid<ul>
-<li>the feature vector will now depend on email length</li>
-<li>laplace mothing based on dictionary size instead of the size of the feature vector</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="support-vector-machines">Support Vector Machines</h2>
-<h2 id="multiclass-classification">Multiclass Classification</h2>
-<ul>
-<li>To classify an input into one of <script type="math/tex">k</script> classes, there are two techniques that can be applied to any of the classification methods (logistic regression, perceptron, SVM)</li>
-<li><a href="https://machinelearningmastery.com/one-vs-rest-and-one-vs-one-for-multi-class-classification/">ML Mastery</a></li>
-</ul>
-<h3 id="one-vs-all">One-vs-All</h3>
-<ul>
-<li>aka one-vs-rest</li>
-<li>
-<p>For each <script type="math/tex">i = 1, \dots, k</script> train a binary classifier to succesfully classify <script type="math/tex">y = i</script>. </p>
-<ul>
-<li>This yields a set of parameters <script type="math/tex">\theta^{(1)}, \dots, \theta^{(k)}</script>
-</li>
+<script type="math/tex">U</script> and <script type="math/tex">V</script> are orothonormal matrices (unitary so <script type="math/tex">UU^T = U^TU = I_{n \times n}</script>)  <ul>
+<li>Columns of <script type="math/tex">U</script> are "eigen" and give us a basis (that retains the variance of <script type="math/tex">X</script>) that we can represent the column vectors in <script type="math/tex">X</script> in</li>
 </ul>
 </li>
 <li>
-<p>To make predictions for <script type="math/tex">x</script>, select the class <script type="math/tex">i</script> that produces the highest value for <script type="math/tex">h_\theta^{(i)}(x) = (\theta^{(i)})^Tx</script>
+<script type="math/tex">\Sigma</script> is a diagonal matrix (<script type="math/tex">\sigma_1 \geq \cdots \geq \sigma_m \geq 0</script>).</li>
+<li>
+<script type="math/tex">X</script>- each column is a sample</li>
+<li>
+<script type="math/tex">U</script>- left singular vectors</li>
+<li>
+<script type="math/tex">V</script>- right singular vectors. <script type="math/tex">V^T</script> columns give the mixture of the basis columns in <script type="math/tex">U</script> needed to get the corresponding columns in the data matrix <script type="math/tex">X</script>
+</li>
+<li>
+<script type="math/tex">\Sigma</script>- singular values (sigmas are ordered by importance)</li>
+<li>Guaranted to exist and be unique </li>
+<li>Matlab: <code>[u, s, v] = svd(x);</code></li>
+</ul>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=nbBvuuNVfco">SVD Overview Video</a></li>
+</ul>
+<h1 id="principal-component-analysis">Principal Component Analysis</h1>
+<ul>
+<li>Common dimensionality reduction technique </li>
+</ul>
+<h2 id="background-math-refresher">Background Math Refresher</h2>
+<h3 id="variance-covariance">Variance &amp; Covariance</h3>
+<ul>
+<li>Variance measures the spread of the data<ul>
+<li>variance = sum of (dist from mean)^2 / n</li>
+<li>
+<script type="math/tex">Var(X) = \sigma_X^2 = \frac{\sum_{i=1}^n ( x_i - \mu_X)^2}{n-1}</script> (this is sample variance, population variance has <script type="math/tex">n</script>)</li>
+</ul>
+</li>
+<li>Std Deviation is the square root of variance <script type="math/tex">\sigma_X = \sqrt{\sigma_X^2}</script>
+</li>
+<li>For data <script type="math/tex">x \in \mathbb{R}^n</script>, you can measure the variance along each dimension by calculating the variance of the components in that dimenson</li>
+<li>However, variance does not show the whole structure of how multi-dimensional data is distributed so we also use covariance to describe multidimensional data<ul>
+<li>
+<script type="math/tex">Cov(X,Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])]</script>
+</li>
+<li>Subtracting by the expected values of <script type="math/tex">X</script> and <script type="math/tex">Y</script> centers the data at <script type="math/tex">(0,0)</script>
+</li>
+<li>Can be interpreted as taking the avg of the product of coordinates</li>
+</ul>
+</li>
+<li>We define a covariance matrix <script type="math/tex">\Sigma = <script type="math/tex; mode=display">\begin{bmatrix} cov(X,X) & cov(X,Y) \\cov(Y,X) & cov(Y,Y) \\ \end{bmatrix}</script> = <script type="math/tex; mode=display">\begin{bmatrix} var(X) & cov(X,Y) \\cov(Y,X) & var(Y) \\ \end{bmatrix}</script>
+</script>
+<ul>
+<li>Symmetric since property of covariance is that <script type="math/tex">cov(X,Y) = cov(Y,X)</script>
+</li>
+<li>can be <script type="math/tex">n \times n</script> where covariance of each dimension with itself</li>
+<li>for a zero-mean matrix <script type="math/tex">X</script>, we <script type="math/tex">\Sigma = \frac{1}{n-1} XX^T</script>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="eigenvectors-eigenvalues">Eigenvectors &amp; Eigenvalues</h3>
+<ul>
+<li>Eigenvectors of a matrix/linear transform are vectors who maintain the same direction before and after the transformation</li>
+<li>Eigenvalue is the scalar amount eigenvectors are stretched by<ul>
+<li>imaginary eigenvalues indicate rotation</li>
+</ul>
+</li>
+<li>
+<script type="math/tex">Av = \lambda v</script>
+</li>
+<li>eigenvectors of <script type="math/tex">A</script>- direction of stretch of LT from <script type="math/tex">A</script>
+</li>
+<li>eigenvalues of <script type="math/tex">A</script>- magnitude/amt of stretch of LT from A</li>
+<li>Symmetric matrices have orthogonal eigenvectors and real eigenvalues <ul>
+<li>covariance matrices are always symmetric</li>
+</ul>
+</li>
+</ul>
+<h3 id="tieing-them-together">Tieing them Together</h3>
+<ul>
+<li>We can view the covariance matrix as a linear transformation</li>
+<li>The eigenvectors of <script type="math/tex">\Sigma</script> indicate the directions of the variance of the data</li>
+<li>The eigenvalues of <script type="math/tex">\Sigma</script> indicate the magnitude of the variance of the data along the direction of the eigenvectors<ul>
+<li>Larger eigenvalues will indicate more variance is captured along the direction of the corresponding eigenvector</li>
+</ul>
+</li>
+</ul>
+<h2 id="covariance-perspective">Covariance Perspective</h2>
+<ol>
+<li>Calculate the covariance matrix <script type="math/tex">\Sigma</script> of the data </li>
+<li>Find the eigenvalues and corresponding eigenvectors of the covariance matrix</li>
+<li>Select the eigenvectors with the largest eigenvalues to be the basis of a smaller subspace to represent the data <ul>
+<li>Eigenvectors w/ largest eigenvalues represent the directions in which the most variance of the data is capture </li>
+<li>In order to accurately represent the data in lower dimensional space, we want to preserve as much of the original variance as possible</li>
+<li>Can select a new basis based on desired dimension of the subspace or based on how much variance you want preserved (e.g. 80%)<ul>
+<li>sum of eigenvalues of current selected eigenvectors / sum of all eigenvalues = variance preserved in current subspace</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="svd-perspective">SVD Perspective</h2>
+<ul>
+<li>Statistical Interpretation of SVD</li>
+<li>Gives us a heirirachial coordiante system (based on data)<ul>
+<li>want to uncover dominant combinations of features that describe the data as much as possible</li>
+</ul>
+</li>
+<li>
+<script type="math/tex">X</script> - each row is a sample</li>
+<li>
+<p>assumption of gaussian distribution for the data</p>
+</li>
+<li>
+<p>compute mean row and make a giant mean matrix <script type="math/tex">X'</script> out of it that is the same size as <script type="math/tex">X</script>
 </p>
 </li>
-</ul>
-<h3 id="one-vs-one">One-vs-One</h3>
+<li>subtract the mean from the data matrix to get the mean centered matrix <script type="math/tex">\Beta = X - X'</script>
 <ul>
-<li>For each class <script type="math/tex">i = 1, \dots, k</script> train a separate binary classifier to succesfully classify <script type="math/tex">y = i</script> against each other class<ul>
-<li>Results in <script type="math/tex">\frac{k(k-1)}{2}</script> Classifiers </li>
+<li>centers data at the origin</li>
 </ul>
 </li>
-<li>To make predictions for <script type="math/tex">x</script>:<ul>
-<li>Each model may predict a class label for <script type="math/tex">x</script> and the class label with the most votes (most frequently occuring) amongst all the models is the predicted label</li>
-<li>Each model may predict a probability of a class membership of <script type="math/tex">x</script>, so then the probabilites for each class membership are summed up and the class with the highest probability is the predicted label.</li>
+<li>
+<p>Covariance matrix (<script type="math/tex">\Sigma</script> in SVD) of rows of <script type="math/tex">\Beta</script>: <script type="math/tex">C = \Beta^T \Beta</script>
+</p>
+</li>
+<li>
+<p>Takeaway: Can compute principal components and loadings from the SVD of your mean subtracted data </p>
+<ul>
+<li>principal components: <script type="math/tex">T = U \Sigma</script>
+</li>
 </ul>
 </li>
-<li>Example w/ 4 classes: ‘<em>red</em>,’ ‘<em>blue</em>,’ and ‘<em>green</em>,’ ‘<em>yellow</em>.’ This would be divided into six binary classification problems:<ul>
-<li>1: red vs. blue</li>
-<li>2: red vs. green</li>
-<li>3: red vs. yellow</li>
-<li>4: blue vs. green</li>
-<li>5: blue vs. yellow</li>
-<li>6: green vs. yellow</li>
+</ul>
+<h2 id="optimization-perspective">Optimization Perspective</h2>
+<ul>
+<li>We want compute the major axis of variation <script type="math/tex">u</script> of a mean normalized dataset</li>
+<li>
+<script type="math/tex">\max_u \frac{1}{n} \sum_{i=1}^n (x^{(i)^T} u)^2</script> subject to <script type="math/tex">||u||_2 = 1</script>
+<ul>
+<li>
+<script type="math/tex">x^Tu</script> is the distance/variation from the origin (assumes the data's mean is at the origin) so we want to maximize it for all samples, subject to the constraint of <script type="math/tex">u</script> being a unit vector </li>
+<li>the problem expands to: <script type="math/tex">\max_u \frac{1}{n} u^T \Sigma u</script> subject to <script type="math/tex">u^Tu = 1</script>
+<ul>
+<li>Can be solved using the method of lagrange multiplier to yield <script type="math/tex">\Sigma u = \lambda u</script>
+</li>
 </ul>
 </li>
+</ul>
+</li>
+<li>This means the top <script type="math/tex">k</script> eigenvectors of <script type="math/tex">\Sigma \in \mathbb{R}^{n \times n}</script> are the principal components that form a new orthogonal basis for the data in <script type="math/tex">\mathbb{R}^k</script>
+</li>
+<li>Given <script type="math/tex">x \in \mathbb{R}^n</script> where <script type="math/tex">n >> k</script>, we can represent it in <script type="math/tex">\mathbb{R}^k</script> using the <script type="math/tex">k</script> principal components <script type="math/tex">u_i \in \mathbb{R}^n</script>
+<ul>
+<li>
+<script type="math/tex">
+<script type="math/tex; mode=display">\begin{bmatrix} u_1^Tx \\ \vdots \\ u_k^T x\end{bmatrix}</script> \in \mathbb{R}^k</script>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="applications">Applications</h2>
+<ul>
+<li>Noise Reduction</li>
+<li>Image Compression </li>
+</ul>
+<h2 id="resources_1">Resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=fkf4IBRSeEc">PCA using SVD Video</a></li>
+<li><a href="https://www.youtube.com/watch?v=g-Hb26agBFg">PCA Intuition Video</a></li>
+<li><a href="https://datascienceplus.com/understanding-the-covariance-matrix/">Covariance Matrix</a></li>
+<li><a href="https://math.stackexchange.com/questions/3869/what-is-the-intuitive-relationship-between-svd-and-pca">Relationship btw SVD &amp; PCA</a></li>
+<li><a href="https://arxiv.org/pdf/1404.1100.pdf">Tutorial on PCA</a></li>
+<li><a href="https://cs229.stanford.edu/notes2021fall/cs229-notes10.pdf">CS 229 Notes</a></li>
 </ul></div>
             </div>
         </div>

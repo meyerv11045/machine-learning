@@ -53,6 +53,14 @@
 </li>
                                     
 <li>
+    <a href="../dim_red/" class="dropdown-item">Dimensionality Reduction</a>
+</li>
+                                    
+<li>
+    <a href="../clustering/" class="dropdown-item">Clustering</a>
+</li>
+                                    
+<li>
     <a href="../optimization/" class="dropdown-item">Optimization Techniques</a>
 </li>
                                     
@@ -62,6 +70,18 @@
                                     
 <li>
     <a href="../model_selection/" class="dropdown-item">Model Selection</a>
+</li>
+                                    
+<li>
+    <a href="../regularization/" class="dropdown-item">Regularization</a>
+</li>
+                                    
+<li>
+    <a href="../pca/" class="dropdown-item">PCA</a>
+</li>
+                                    
+<li>
+    <a href="../svms/" class="dropdown-item">SVMs</a>
 </li>
                                     
 <li>
@@ -83,6 +103,10 @@
                                     
 <li>
     <a href="../nn/auto_encoders/" class="dropdown-item">AutoEncoders</a>
+</li>
+                                    
+<li>
+    <a href="../nn/ssl/" class="dropdown-item">Self-Supervised Learning</a>
 </li>
                                 </ul>
                             </li>
@@ -167,11 +191,11 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#multiplepolynomial-linear-regression" class="nav-link">Multiple/Polynomial Linear Regression</a>
+            <li class="nav-item" data-level="2"><a href="#multiple-linear-regression" class="nav-link">Multiple Linear Regression</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#probabilistic-linear-regression" class="nav-link">Probabilistic Linear Regression</a>
+            <li class="nav-item" data-level="2"><a href="#polynomial-regression" class="nav-link">Polynomial Regression</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -188,7 +212,9 @@
 
 <h1 id="regression">Regression</h1>
 <h2 id="simple-linear-regression">Simple Linear Regression</h2>
-<h2 id="multiplepolynomial-linear-regression">Multiple/Polynomial Linear Regression</h2>
+<h3 id="probabilistic-interpretation">Probabilistic Interpretation</h3>
+<h2 id="multiple-linear-regression">Multiple Linear Regression</h2>
+<h2 id="polynomial-regression">Polynomial Regression</h2>
 <h3 id="scikit-learn">Scikit Learn</h3>
 <ul>
 <li>
@@ -207,8 +233,31 @@
 </ul>
 </li>
 </ul>
-<h2 id="probabilistic-linear-regression">Probabilistic Linear Regression</h2>
-<h2 id="locally-weighted-linear-regression">Locally Weighted Linear Regression</h2></div>
+<h2 id="locally-weighted-linear-regression">Locally Weighted Linear Regression</h2>
+<ul>
+<li>For a given query point <script type="math/tex">x \in \mathbb{R}^n</script>, we compute the weights of all other training points and use these weights to compute the optimal parameters <script type="math/tex">\theta \in \mathbb{R}^n</script>. </li>
+<li>Each training sample has a weight <script type="math/tex">w^{(i)} = \exp (-\frac{(x^{(i)} - x)^2}{2 \tau^2})</script>
+</li>
+<li>The weights for the each training sample are placed along the diagonal of a matrix of zeros <script type="math/tex">W \in \mathbb{R}^{m \times m}</script>
+</li>
+<li>Optimal parameters can be calculated using the closed form equation for ordinary least squares:<ul>
+<li>
+<script type="math/tex; mode=display">\theta = (X^T W X )^{-1} X^T Wy</script>
+</li>
+<li>Must be recomputed for each new query point since the weights change for each query point (computationally expensive)</li>
+</ul>
+</li>
+<li>
+<script type="math/tex">h_\theta(x) = \theta^T x = x^T \theta</script> where <script type="math/tex">x \in \mathbb{R}^n</script>
+</li>
+<li>Note that the intercept term of <script type="math/tex">x_0 = 1</script> is not used in LWLR</li>
+<li>
+<script type="math/tex">\tau</script> is the bandwith parameter<ul>
+<li>Increasing <script type="math/tex">\tau</script> gives more equal weighting to all training samples, resulting in more underfitting</li>
+<li>Decreasing <script type="math/tex">\tau</script> gives more weighting to nearby training samples, resulting in more overfitting</li>
+</ul>
+</li>
+</ul></div>
             </div>
         </div>
 

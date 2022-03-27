@@ -53,6 +53,14 @@
 </li>
                                     
 <li>
+    <a href="../../machine_learning/dim_red/" class="dropdown-item">Dimensionality Reduction</a>
+</li>
+                                    
+<li>
+    <a href="../../machine_learning/clustering/" class="dropdown-item">Clustering</a>
+</li>
+                                    
+<li>
     <a href="../../machine_learning/optimization/" class="dropdown-item">Optimization Techniques</a>
 </li>
                                     
@@ -62,6 +70,18 @@
                                     
 <li>
     <a href="../../machine_learning/model_selection/" class="dropdown-item">Model Selection</a>
+</li>
+                                    
+<li>
+    <a href="../../machine_learning/regularization/" class="dropdown-item">Regularization</a>
+</li>
+                                    
+<li>
+    <a href="../../machine_learning/pca/" class="dropdown-item">PCA</a>
+</li>
+                                    
+<li>
+    <a href="../../machine_learning/svms/" class="dropdown-item">SVMs</a>
 </li>
                                     
 <li>
@@ -83,6 +103,10 @@
                                     
 <li>
     <a href="../../machine_learning/nn/auto_encoders/" class="dropdown-item">AutoEncoders</a>
+</li>
+                                    
+<li>
+    <a href="../../machine_learning/nn/ssl/" class="dropdown-item">Self-Supervised Learning</a>
 </li>
                                 </ul>
                             </li>
@@ -134,7 +158,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../machine_learning/nn/auto_encoders/" class="nav-link">
+                                <a rel="prev" href="../../machine_learning/nn/ssl/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -195,10 +219,6 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#-a-variable-added-to-an-inequality-constraint-to-transform-it-into-an-equality" class="nav-link">- A variable added to an inequality constraint to transform it into an equality</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
             <li class="nav-item" data-level="2"><a href="#lagrange-multipliers" class="nav-link">Lagrange Multipliers</a>
               <ul class="nav flex-column">
               </ul>
@@ -249,25 +269,36 @@ subject to the contraints:
 <hr />
 <h2 id="constraints">Constraints</h2>
 <ul>
-<li>A constraint is a condition of an optimization problem that the solution must satisfy</li>
-<li><strong>Feasible Set</strong>- is the set of candidate solutions that satisfy all constraints<ul>
+<li>
+<p>A constraint is a condition of an optimization problem that the solution must satisfy</p>
+</li>
+<li>
+<p><strong>Feasible Set</strong>- is the set of candidate solutions that satisfy all constraints</p>
+<ul>
 <li>A point is <strong>infeasible</strong> if it does not satisfy a constraint</li>
 </ul>
 </li>
-<li>A constraint is <strong>binding</strong> if an inequality constraint holds with equality at the optimal point<ul>
+<li>
+<p>A constraint is <strong>binding</strong> if an inequality constraint holds with equality at the optimal point</p>
+<ul>
 <li>i.e. the point is at the edge of the feasible set and cannot move anymore in the direction of the constraint, even if doing so would improve the value of the objective function, since it would move outside the feasible set</li>
 </ul>
 </li>
-<li>A constraint is <strong>non-binding</strong> if the point could be moved in the direction of the constraint<ul>
-<li>i.e. the point is not at the edge of the feasible set and can be moved more in the direction of the constraint, however doing so would not be optimal </li>
-<li>This can mean under certain conditions that the optimization problem would have the same solution in the absence of the constraint since the objective function's minimum does not push up against the edge of the feasible set</li>
-<li></li>
+<li>
+<p>A constraint is <strong>non-binding</strong> if the point could be moved in the direction of the constraint</p>
+<ul>
+<li>
+<p>i.e. the point is not at the edge of the feasible set and can be moved more in the direction of the constraint, however doing so would not be optimal </p>
+</li>
+<li>
+<p>This can mean under certain conditions that the optimization problem would have the same solution in the absence of the constraint since the objective function's minimum does not push up against the edge of the feasible set</p>
+</li>
 </ul>
 </li>
 </ul>
 <h2 id="slack-variable">Slack Variable</h2>
-<h2 id="-a-variable-added-to-an-inequality-constraint-to-transform-it-into-an-equality">- A variable added to an inequality constraint to transform it into an equality</h2>
 <ul>
+<li>A variable added to an inequality constraint to transform it into an equality</li>
 <li>If the slack variable for a constraint is zero at a point, the constraint is binding there</li>
 <li>If the slack variable for a constraint is positive at a point, the constraint is non-binding there</li>
 <li>If the slack variable for a constraint is negative at a point, the point is infeasible as it does not satisfy the constraint (can be thought of as outside the feasible set)<ul>

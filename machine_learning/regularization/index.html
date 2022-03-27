@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/supervised_learning/">
+        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/regularization/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Supervised Learning - ML Notebook</title>
+        <title>Regularization - ML Notebook</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -41,7 +41,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Supervised Learning</a>
+    <a href="../supervised_learning/" class="dropdown-item">Supervised Learning</a>
 </li>
                                     
 <li>
@@ -73,7 +73,7 @@
 </li>
                                     
 <li>
-    <a href="../regularization/" class="dropdown-item">Regularization</a>
+    <a href="./" class="dropdown-item active">Regularization</a>
 </li>
                                     
 <li>
@@ -158,12 +158,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../.." class="nav-link">
+                                <a rel="prev" href="../model_selection/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../regression/" class="nav-link">
+                                <a rel="next" href="../pca/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -185,13 +185,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#supervised-learning" class="nav-link">Supervised Learning</a>
+            <li class="nav-item" data-level="1"><a href="#regularization" class="nav-link">Regularization</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#function-approximation" class="nav-link">Function Approximation</a>
+            <li class="nav-item" data-level="2"><a href="#linear-regression" class="nav-link">Linear Regression</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#resources" class="nav-link">Resources</a>
+            <li class="nav-item" data-level="2"><a href="#logistic-regression" class="nav-link">Logistic Regression</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -202,25 +202,22 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="supervised-learning">Supervised Learning</h1>
+<h1 id="regularization">Regularization</h1>
 <ul>
-<li>Regression- predicting continuous values</li>
-<li>Classification- predicting discrete values</li>
+<li>
+<p><a href="https://www.coursera.org/learn/machine-learning/home/week/6">Coursera ML</a></p>
+</li>
+<li>
+<p>High Bias (underfitting)</p>
+</li>
+<li>High variance (overfitting)</li>
+<li>As <script type="math/tex">\lambda \to 0</script> we tend to overfit the data <ul>
+<li>Larger <script type="math/tex">\lambda</script> penalizes large weights more</li>
 </ul>
-<h2 id="function-approximation">Function Approximation</h2>
-<p>Function approximation is a technique for estimating an unknown underyling function using observations from the domain and their resulting image.</p>
-<p>Given a dataset of inputs and outputs, we can assume there is an unkwnown underyling function that maps the inputs to the outputs. We can use supervised learning techniques to approximate this function.</p>
-<p>Supervised learning achieves this by minimizing the error between predicted outputs and expected outputs from the domain by changing its parameters (the weights of the network).</p>
-<p>Thus, simple feedforward neural networks can be better thought of as function approximators rather than models of how the brain works.</p>
-<p>The true function mapping inputs to outputs is referred to as the <strong>target function</strong> since it is the target of the learning process.</p>
-<p>Thus, intuitively we can better get a sense of what the function is by observing more input-output data points.</p>
-<p>The universal approximation theorem states a feedforward NN with a linear output layer and at least 1 hidden layer with a nonlinear activation function can approximate any function mapping between two finite dimensional spaces with any desired non-zero amount of error (provided enough hidden units).</p>
-<p>Below is an example of <script type="math/tex">y=x^2</script> being approximated by a simple feedforward NN with 2 hidden layers of 10 nodes with relu activation trained on 100 observations:
-<img alt="Example Approximation" src="https://machinelearningmastery.com/wp-content/uploads/2019/12/Scatter-Plot-of-Input-vs-Actual-and-Predicted-Values-for-the-Neural-Net-Approximation.png" />.</p>
-<h2 id="resources">Resources</h2>
-<ul>
-<li><a href="https://machinelearningmastery.com/neural-networks-are-function-approximators/">Function Approximators</a></li>
-</ul></div>
+</li>
+</ul>
+<h2 id="linear-regression">Linear Regression</h2>
+<h2 id="logistic-regression">Logistic Regression</h2></div>
             </div>
         </div>
 

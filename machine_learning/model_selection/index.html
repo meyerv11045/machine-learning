@@ -53,6 +53,14 @@
 </li>
                                     
 <li>
+    <a href="../dim_red/" class="dropdown-item">Dimensionality Reduction</a>
+</li>
+                                    
+<li>
+    <a href="../clustering/" class="dropdown-item">Clustering</a>
+</li>
+                                    
+<li>
     <a href="../optimization/" class="dropdown-item">Optimization Techniques</a>
 </li>
                                     
@@ -62,6 +70,18 @@
                                     
 <li>
     <a href="./" class="dropdown-item active">Model Selection</a>
+</li>
+                                    
+<li>
+    <a href="../regularization/" class="dropdown-item">Regularization</a>
+</li>
+                                    
+<li>
+    <a href="../pca/" class="dropdown-item">PCA</a>
+</li>
+                                    
+<li>
+    <a href="../svms/" class="dropdown-item">SVMs</a>
 </li>
                                     
 <li>
@@ -83,6 +103,10 @@
                                     
 <li>
     <a href="../nn/auto_encoders/" class="dropdown-item">AutoEncoders</a>
+</li>
+                                    
+<li>
+    <a href="../nn/ssl/" class="dropdown-item">Self-Supervised Learning</a>
 </li>
                                 </ul>
                             </li>
@@ -139,7 +163,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../reinforcement_learning/" class="nav-link">
+                                <a rel="next" href="../regularization/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -236,11 +260,20 @@
 </li>
 <li>Computationally more expensive than hold-out since we need to train <em>each</em> model <script type="math/tex">k</script> times </li>
 </ul>
-<h3 id="leave-one-out">leave-one-out</h3>
+<h3 id="leave-one-out">Leave-one-out</h3>
 <ul>
 <li>Useful for when data is scare</li>
 <li>Perform k-fold cross validation where <script type="math/tex">k = m</script> in order to leave out as little data as possible each time</li>
 <li>Holds out one training example each time and then averages together the resulting <script type="math/tex">m = k</script> errors to get an estimate for the generalization error of a model</li>
+</ul>
+<h3 id="nested-cross-validation">Nested Cross Validation</h3>
+<ul>
+<li>Used to do model hyperparameter optimization and model selection at the same time while avoiding overfitting the training data</li>
+<li>k-fold CV for model hyperparam optimization is nested inside th k-fold CV for model selection<ul>
+<li>this prevents hyperparam search from overfitting the dataset since it is exposed to only a subset of the data provided by the outer CV procedure</li>
+</ul>
+</li>
+<li>Very computationally expensive</li>
 </ul>
 <h2 id="feature-selection">Feature Selection</h2>
 <ul>

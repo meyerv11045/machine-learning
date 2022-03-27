@@ -6,16 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/svms/">
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Kernel Methods - ML Notebook</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
+        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/svms/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>SVMs - ML Notebook</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">ML Notebook</a>
+                <a class="navbar-brand" href="../..">ML Notebook</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -34,38 +34,58 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href=".." class="nav-link">Home</a>
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Machine Learning <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../machine_learning/supervised_learning/" class="dropdown-item">Supervised Learning</a>
+    <a href="../supervised_learning/" class="dropdown-item">Supervised Learning</a>
 </li>
                                     
 <li>
-    <a href="../machine_learning/regression/" class="dropdown-item">Regression</a>
+    <a href="../regression/" class="dropdown-item">Regression</a>
 </li>
                                     
 <li>
-    <a href="../machine_learning/classification/" class="dropdown-item">Classification</a>
+    <a href="../classification/" class="dropdown-item">Classification</a>
 </li>
                                     
 <li>
-    <a href="../machine_learning/optimization/" class="dropdown-item">Optimization Techniques</a>
+    <a href="../dim_red/" class="dropdown-item">Dimensionality Reduction</a>
 </li>
                                     
 <li>
-    <a href="../machine_learning/feature_scaling/" class="dropdown-item">Feature Scaling</a>
+    <a href="../clustering/" class="dropdown-item">Clustering</a>
 </li>
                                     
 <li>
-    <a href="../machine_learning/model_selection/" class="dropdown-item">Model Selection</a>
+    <a href="../optimization/" class="dropdown-item">Optimization Techniques</a>
 </li>
                                     
 <li>
-    <a href="../machine_learning/reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
+    <a href="../feature_scaling/" class="dropdown-item">Feature Scaling</a>
+</li>
+                                    
+<li>
+    <a href="../model_selection/" class="dropdown-item">Model Selection</a>
+</li>
+                                    
+<li>
+    <a href="../regularization/" class="dropdown-item">Regularization</a>
+</li>
+                                    
+<li>
+    <a href="../pca/" class="dropdown-item">PCA</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">SVMs</a>
+</li>
+                                    
+<li>
+    <a href="../reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
 </li>
                                 </ul>
                             </li>
@@ -74,15 +94,19 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../machine_learning/nn/activation_functions/" class="dropdown-item">Activation Functions</a>
+    <a href="../nn/activation_functions/" class="dropdown-item">Activation Functions</a>
 </li>
                                     
 <li>
-    <a href="../machine_learning/nn/pytorch/" class="dropdown-item">PyTorch</a>
+    <a href="../nn/pytorch/" class="dropdown-item">PyTorch</a>
 </li>
                                     
 <li>
-    <a href="../machine_learning/nn/auto_encoders/" class="dropdown-item">AutoEncoders</a>
+    <a href="../nn/auto_encoders/" class="dropdown-item">AutoEncoders</a>
+</li>
+                                    
+<li>
+    <a href="../nn/ssl/" class="dropdown-item">Self-Supervised Learning</a>
 </li>
                                 </ul>
                             </li>
@@ -91,11 +115,11 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../optimization/overview/" class="dropdown-item">Overview</a>
+    <a href="../../optimization/overview/" class="dropdown-item">Overview</a>
 </li>
                                     
 <li>
-    <a href="../optimization/convergence/" class="dropdown-item">Convergence</a>
+    <a href="../../optimization/convergence/" class="dropdown-item">Convergence</a>
 </li>
                                     
   <li class="dropdown-submenu">
@@ -103,25 +127,25 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../optimization/root-methods/newtons/" class="dropdown-item">Newtons Method</a>
+    <a href="../../optimization/root-methods/newtons/" class="dropdown-item">Newtons Method</a>
 </li>
             
 <li>
-    <a href="../optimization/root-methods/secant/" class="dropdown-item">Secant Method</a>
+    <a href="../../optimization/root-methods/secant/" class="dropdown-item">Secant Method</a>
 </li>
             
 <li>
-    <a href="../optimization/root-methods/bisection/" class="dropdown-item">Bisection</a>
+    <a href="../../optimization/root-methods/bisection/" class="dropdown-item">Bisection</a>
 </li>
             
 <li>
-    <a href="../optimization/root-methods/regula_falsi/" class="dropdown-item">Regula Falsi</a>
+    <a href="../../optimization/root-methods/regula_falsi/" class="dropdown-item">Regula Falsi</a>
 </li>
     </ul>
   </li>
                                     
 <li>
-    <a href="../optimization/mpc/" class="dropdown-item">Model Predictive Control</a>
+    <a href="../../optimization/mpc/" class="dropdown-item">Model Predictive Control</a>
 </li>
                                 </ul>
                             </li>
@@ -133,6 +157,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../pca/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../reinforcement_learning/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -157,7 +191,11 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#radial-basis-function-kernel" class="nav-link">radial basis function kernel</a>
+            <li class="nav-item" data-level="2"><a href="#kernels" class="nav-link">Kernels</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#support-vector-machines" class="nav-link">Support Vector Machines</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -180,20 +218,77 @@
 </ul>
 <h2 id="kernel-trick">Kernel Trick</h2>
 <ul>
-<li>Initialize <script type="math/tex">\theta = 0</script>
-</li>
-<li>Theta can be represented as a linear combination of vectors</li>
-<li>
-<script type="math/tex">\theta = \sum_{i=1}^n \beta_i \phi(x^{(i)})</script>
+<li>Avoids computing the explicit mapping needed to allow linear learning algorithms to learn a nonlinear decision boundary </li>
+<li>Dot products in the high-dimensional feature space can be computed as a kernel function <script type="math/tex">K(x, x') = \phi (x)^T \phi(x')</script> thus avoiding the need to actually compute <script type="math/tex">\phi (x)</script>
 </li>
 </ul>
-<h2 id="radial-basis-function-kernel">radial basis function kernel</h2>
+<h2 id="kernels">Kernels</h2>
+<ul>
+<li>Dot products measure similarity of two vectors (tells us how parallel two vectors are)<ul>
+<li>dot product projects a vector onto another and is the length of that projected vector </li>
+</ul>
+</li>
+<li>Since kernels replace dot products, they are a similarity measure</li>
+<li>They are a class of functions (defined by mercer's theorem) that provably correspond to the dot product of some higher dimensional mapping <ul>
+<li>Allow us to replace all dot products in the dual SVM computation with the kernel function that represents the data in a higher dimensional (and linearly separable) feature space</li>
+</ul>
+</li>
+</ul>
+<h3 id="linear">Linear</h3>
+<ul>
+<li>Just the basic dot product (no feature mapping)</li>
+<li>Can be used when the data is already linearly separable</li>
+</ul>
+<h3 id="polynomial">Polynomial</h3>
+<p>
+<script type="math/tex; mode=display">K(x, x') = (x^Tx' + c )^d</script>
+</p>
+<p>where <script type="math/tex">c \geq 0</script> and <script type="math/tex">d \geq 1</script> are parameters of the kernel. </p>
+<ul>
+<li>When <script type="math/tex">c = 0</script> the kernel is called homogeneous </li>
+<li>Commonly applied to NLP problems with <script type="math/tex">d = 2</script> (higher <script type="math/tex">d</script> usually results in overfitting on NLP problems) </li>
+<li>The mapped to feature space is equivalent to that of polynomial regression however the number of parameters to learn is decreased drastically</li>
+</ul>
+<h3 id="radial-basis-function-gaussian">Radial Basis Function / Gaussian</h3>
+<p>
+<script type="math/tex; mode=display">K(x, x') = \exp(-\gamma || x - x'||^2)</script>
+</p>
+<p>where <script type="math/tex">\gamma = \frac{1}{2\sigma^2}</script> is a parameter of the kernel that controls the spread.</p>
+<ul>
+<li>The RBF kernel projects features into an infinite dimensional Euclidean space  which is where it is able to linearly separate any originally nonlinearly seperable data (this is why it performs so well and is so often used)<ul>
+<li><a href="https://pages.cs.wisc.edu/~matthewb/pages/notes/pdf/svms/RBFKernel.pdf">RBF Kernel as Projection into Infinite Dimensional Space</a> </li>
+</ul>
+</li>
+<li>Need to do feature scaling before using gaussian kernel </li>
+</ul>
+<h3 id="other">Other</h3>
+<ul>
+<li>Specialized to data type:<ul>
+<li>String, Graph, Tree, Wavelet, etc. </li>
+</ul>
+</li>
+<li>chi-square</li>
+<li>cosine similarity</li>
+<li>Sigmoid: <script type="math/tex; mode=display">K(x, x') = \tanh (\beta x^T x' + a)</script>
+</li>
+</ul>
+<h2 id="support-vector-machines">Support Vector Machines</h2>
+<ul>
+<li>Formulated as an optimization problem to find the optimal parameters </li>
+<li>The dual form of the optimization problem depends only on the dot product of datapoints (similarity of the training examples)<ul>
+<li>Replacing this dot product with a kernel function allows the algorithm to learn a nonlinear decision boundary in the original input space by projecting the low dimensional features into a higher dimensional feature space where they are linearly separable </li>
+<li>Using the kernel trick allowsus to leverage the advantages of the feature mapping without the computational costs of computing the mapping for each datapoint</li>
+<li>The cost function is convex so it guarantees the existance of a global extremum</li>
+</ul>
+</li>
+</ul>
+<h3 id="resources">Resources</h3>
 <ul>
 <li>
-<p>when <script type="math/tex">|| x - z||^2 </script> is large, the value of the kernel is small</p>
-<ul>
-<li>far away -&gt; small kernel values</li>
-</ul>
+<p><a href="https://ai-master.gitbooks.io/kernel-svm/content/">AI Master Kernel SVM</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=_PwhiWxHK8o">MIT Lecture (Great- builds up from basics!)</a></p>
 </li>
 </ul></div>
             </div>
@@ -204,12 +299,12 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "..",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
+        <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
