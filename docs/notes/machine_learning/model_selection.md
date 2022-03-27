@@ -33,13 +33,18 @@
 - Typical choice is $k =10$
 - Computationally more expensive than hold-out since we need to train *each* model $k$ times 
 
-
-
-### leave-one-out
+### Leave-one-out
 
 - Useful for when data is scare
 - Perform k-fold cross validation where $k = m$ in order to leave out as little data as possible each time
 - Holds out one training example each time and then averages together the resulting $m = k$ errors to get an estimate for the generalization error of a model
+
+### Nested Cross Validation 
+
+- Used to do model hyperparameter optimization and model selection at the same time while avoiding overfitting the training data
+- k-fold CV for model hyperparam optimization is nested inside th k-fold CV for model selection
+    - this prevents hyperparam search from overfitting the dataset since it is exposed to only a subset of the data provided by the outer CV procedure
+- Very computationally expensive
 
 
 

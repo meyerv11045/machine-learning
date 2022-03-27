@@ -11,3 +11,8 @@
 - **Batch**: cost function over the entire dataset before doing a model parameter update
     - scan entire dataset before taking step
 - For convex cost functions, gradient descent always converges to the global minimum assuming learning rate is not too large
+
+
+## Coordinate Descent
+
+- [Wiki](https://en.wikipedia.org/wiki/Coordinate_descent)
