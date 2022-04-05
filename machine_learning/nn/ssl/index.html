@@ -85,6 +85,10 @@
 </li>
                                     
 <li>
+    <a href="../../dts/" class="dropdown-item">Decision Trees</a>
+</li>
+                                    
+<li>
     <a href="../../reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
 </li>
                                 </ul>
@@ -92,6 +96,10 @@
                             <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Neural Networks <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../overview/" class="dropdown-item">Overview</a>
+</li>
                                     
 <li>
     <a href="../activation_functions/" class="dropdown-item">Activation Functions</a>
@@ -187,6 +195,10 @@
             
             <li class="nav-item" data-level="1"><a href="#self-supervised-learning" class="nav-link">Self Supervised Learning</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#weakenss-of-supervised-learning" class="nav-link">Weakenss of Supervised Learning</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#ssl-model-capacity" class="nav-link">SSL Model Capacity</a>
               <ul class="nav flex-column">
               </ul>
@@ -196,10 +208,6 @@
               </ul>
             </li>
             <li class="nav-item" data-level="2"><a href="#contrastive-learning" class="nav-link">Contrastive Learning</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#weakenss-of-supervised-learning" class="nav-link">Weakenss of Supervised Learning</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -213,6 +221,20 @@
 <h1 id="self-supervised-learning">Self Supervised Learning</h1>
 <ul>
 <li>By forcing the model to learn a task defined in terms of input images, it forces the network to learn features which will be useful for downstream general visual recognition tasks later </li>
+</ul>
+<h2 id="weakenss-of-supervised-learning">Weakenss of Supervised Learning</h2>
+<ul>
+<li>Annotations:<ul>
+<li>costly (e.g. medical imaging data)</li>
+<li>ambiguous (set of labels not always obvious )</li>
+<li>biased  (bias in selecting data and/or annotator)</li>
+<li>privacy concerns (e.g. medical imaging data)</li>
+<li>limits learning to predefined categories<ul>
+<li>e.g. all dogs are one category but later we might want to seperate dog breeds with transfer learning but this isnt great for that</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h2 id="ssl-model-capacity">SSL Model Capacity</h2>
 <ul>
@@ -251,20 +273,6 @@
 <li>The network is trained to pull together these augmented pairs (positive pairs)</li>
 <li>In order to prevent the network from learning trivial embeddings, random images are passed through the network and the loss function is structured to push negative pairs away from the positive pairs <ul>
 <li>A memory bank that remembers other negatives also helps</li>
-</ul>
-</li>
-</ul>
-<h2 id="weakenss-of-supervised-learning">Weakenss of Supervised Learning</h2>
-<ul>
-<li>Annotations:<ul>
-<li>costly (e.g. medical imaging data)</li>
-<li>ambiguous (set of labels not always obvious )</li>
-<li>biased  (bias in selecting data and/or annotator)</li>
-<li>privacy concerns (e.g. medical imaging data)</li>
-<li>limits learning to predefined categories<ul>
-<li>e.g. all dogs are one category but later we might want to seperate dog breeds with transfer learning but this isnt great for that</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul></div>

@@ -85,6 +85,10 @@
 </li>
                                     
 <li>
+    <a href="../../dts/" class="dropdown-item">Decision Trees</a>
+</li>
+                                    
+<li>
     <a href="../../reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
 </li>
                                 </ul>
@@ -92,6 +96,10 @@
                             <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Neural Networks <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../overview/" class="dropdown-item">Overview</a>
+</li>
                                     
 <li>
     <a href="./" class="dropdown-item active">Activation Functions</a>
@@ -158,7 +166,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../reinforcement_learning/" class="nav-link">
+                                <a rel="prev" href="../overview/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -187,7 +195,7 @@
             
             <li class="nav-item" data-level="1"><a href="#activation-functions" class="nav-link">Activation Functions</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#why-do-we-need-activation-functions" class="nav-link">Why do we need activation functions?</a>
+            <li class="nav-item" data-level="2"><a href="#why-do-we-need-nonlinear-activation-functions" class="nav-link">Why do we need nonlinear activation functions?</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -195,7 +203,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#tanh-hyperbolic-tangent" class="nav-link">TanH/ Hyperbolic Tangent</a>
+            <li class="nav-item" data-level="2"><a href="#tanh-hyperbolic-tangent" class="nav-link">TanH (Hyperbolic Tangent)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -231,8 +239,8 @@
 <li>Allow sacking of multiple hidden layers unlike linear activation functions</li>
 <li>Most all processes can be modeled by a neural network w/ nonlinear activation functions</li>
 </ul>
-<h2 id="why-do-we-need-activation-functions">Why do we need activation functions?</h2>
-<p>Matrix multiplication and vector addition are simply linear transformations so in order to learn any nonlinear representations of data, we need to introduce a non-linear function or else the most complex classification boundary it can learn will be linear (e.g. line, plane, etc. ) which isn't that useful for interesting problems.</p>
+<h2 id="why-do-we-need-nonlinear-activation-functions">Why do we need nonlinear activation functions?</h2>
+<p>Matrix multiplication and vector addition are simply linear transformations so in order to learn any nonlinear representations of data, we need to introduce a non-linear function or else the most complex classification boundary it can learn will be linear (e.g. line, plane, etc. ) which isn't that useful for interesting problems. If the activation function was linear (e.g. identity function), then the network would essentially just be a linear regression.</p>
 <p>In order to introduce non-linearity (otherwise matrix ops will result in only linear transformations), we apply non-linear activation functions pointwise to the results of the linear transformations at each layer.</p>
 <h2 id="sigmoidlogistic">Sigmoid/Logistic</h2>
 <p>
@@ -244,28 +252,53 @@
 <p>Pros: </p>
 <ul>
 <li><em>Smooth Gradient</em> prevents jumps in the output values</li>
-<li><em>Output vaues bound</em> btw 0 and 1, normalizing the each neuron's output</li>
-<li><em>Clear predictions</em>- any values above 2 or below -2 are very close to the edge of the curve </li>
+<li>
+<p><em>Output vaues bound</em> btw 0 and 1, normalizing the each neuron's output </p>
+<ul>
+<li>can be interpreted as a probability</li>
+</ul>
+</li>
+<li>
+<p><em>Clear predictions</em>- any values above 2 or below -2 are very close to the edge of the curve </p>
+</li>
 </ul>
 <p>Cons:</p>
 <ul>
 <li>Vanishing Gradient- almost no change in the prediction for very high and very low input values</li>
+<li>Very large input values to sigmoid function result in a tiny gradient since we are at a nearly flat point of the function</li>
+<li>This makes it hard to update the parameters earlier in the network</li>
 <li>Can result in the network refusing to learn further or being too slow to reach an accurate prediction</li>
-<li><em>Outputs not zero centered</em></li>
+<li>
+<p>Works well in linear regime but work poorly in the saturating regimes</p>
+</li>
+<li>
+<p><em>Outputs not zero centered</em></p>
+</li>
 <li><em>Computationally expensive</em></li>
 </ul>
 <p>Detailed Derivation:</p>
 <p>
 <script type="math/tex; mode=display"> \begin{align}\dfrac{d}{dx} \sigma(x) &= \dfrac{d}{dx} \left[ \dfrac{1}{1 + e^{-x}} \right] \\ &= \dfrac{d}{dx} \left( 1 + \mathrm{e}^{-x} \right)^{-1} \\ &= -(1 + e^{-x})^{-2}(-e^{-x}) \\ &= \dfrac{e^{-x}}{\left(1 + e^{-x}\right)^2} \\ &= \dfrac{1}{1 + e^{-x}\ } \cdot \dfrac{e^{-x}}{1 + e^{-x}}  \\ &= \dfrac{1}{1 + e^{-x}\ } \cdot \dfrac{(1 + e^{-x}) - 1}{1 + e^{-x}}  \\ &= \dfrac{1}{1 + e^{-x}\ } \cdot \left( \dfrac{1 + e^{-x}}{1 + e^{-x}} - \dfrac{1}{1 + e^{-x}} \right) \\ &= \dfrac{1}{1 + e^{-x}\ } \cdot \left( 1 - \dfrac{1}{1 + e^{-x}} \right) \\ &= \sigma(x) \cdot (1 - \sigma(x)) \end{align} </script>
 </p>
-<hr />
-<h2 id="tanh-hyperbolic-tangent">TanH/ Hyperbolic Tangent</h2>
-<p>Similar in advantages and disadvantages except it has the advantage of being <em>zero centered</em>, making it easier to models input that have strongly negative, neutral, and strongly positive values</p>
+<h2 id="tanh-hyperbolic-tangent">TanH (Hyperbolic Tangent)</h2>
+<p>
+<script type="math/tex; mode=display">\text{tanh}(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}</script>
+</p>
+<p>
+<script type="math/tex; mode=display">\text{tanh}'(z) = 1 - \text{tanh}(z)^2</script>
+</p>
+<p>Similar in advantages and disadvantages to sigmoid except it has the advantage of being <em>zero centered</em> (i.e. output range is <script type="math/tex">[-1, 1]</script>), making it easier to models input that have strongly negative, neutral, and strongly positive values (e.g. reward for deep RL model)</p>
 <h2 id="relu-rectified-linear-unit">ReLU (Rectified Linear Unit)</h2>
+<p>
+<script type="math/tex; mode=display">\text{ReLU}(z) = \begin{cases}z & \text{if } z \geq 0 \\ 0 & \text{if } z < 0\end{cases}</script>
+</p>
+<p>
+<script type="math/tex; mode=display">\text{ReLU}'(z) = \begin{cases}1 & \text{if } z \geq 0 \\ 0 & \text{if } z < 0\end{cases}</script>
+</p>
 <p>Pros: </p>
 <ul>
 <li><em>Computationally efficient</em>- allows the network to converge quickly </li>
-<li><em>Non-linear</em>- although it seems lik e a lienar function, its derivative allows for backpropagation</li>
+<li><em>Non-linear</em>- although it seems like a lienar function, its derivative allows for backpropagation</li>
 </ul>
 <p>Cons:</p>
 <ul>

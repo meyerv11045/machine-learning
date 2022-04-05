@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/dim_red/">
+        <link rel="canonical" href="https://meyerv11045.github.com/machine-learning/machine_learning/dts/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Dimensionality Reduction - ML Notebook</title>
+        <title>Decision Trees - ML Notebook</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -53,7 +53,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">Dimensionality Reduction</a>
+    <a href="../dim_red/" class="dropdown-item">Dimensionality Reduction</a>
 </li>
                                     
 <li>
@@ -85,7 +85,7 @@
 </li>
                                     
 <li>
-    <a href="../dts/" class="dropdown-item">Decision Trees</a>
+    <a href="./" class="dropdown-item active">Decision Trees</a>
 </li>
                                     
 <li>
@@ -166,12 +166,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../classification/" class="nav-link">
+                                <a rel="prev" href="../svms/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../clustering/" class="nav-link">
+                                <a rel="next" href="../reinforcement_learning/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -193,9 +193,26 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#dimensionality-reduction" class="nav-link">Dimensionality Reduction</a>
+            <li class="nav-item" data-level="1"><a href="#decision-trees" class="nav-link">Decision Trees</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#principal-components-analysis" class="nav-link">Principal Components Analysis</a>
+            <li class="nav-item" data-level="2"><a href="#pros" class="nav-link">Pros</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#cons" class="nav-link">cons</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#ensemble-methods" class="nav-link">Ensemble Methods</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#bagging" class="nav-link">Bagging</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#boosting" class="nav-link">Boosting</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -206,71 +223,42 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="dimensionality-reduction">Dimensionality Reduction</h1>
+<h1 id="decision-trees">Decision Trees</h1>
+<h2 id="pros">Pros</h2>
 <ul>
-<li>Similar to feature selection in that it reduces the complexity of features being learned</li>
-<li>different from feature selection in that it finds a smaller set of new features, each being a combination of input features, that contain the same information as the input features (compare to only keeping the most relevant features from the input features like in feature selection)</li>
+<li>Easily explainable</li>
+<li>Highly interpretable</li>
+<li></li>
 </ul>
-<h2 id="principal-components-analysis">Principal Components Analysis</h2>
+<h2 id="cons">cons</h2>
 <ul>
-<li>Can model data <script type="math/tex">x \in \mathbb{R}^n</script> as approximately lying in some <script type="math/tex">k</script>-dimension subspace where <script type="math/tex">k << d</script>
-</li>
-<li>Prior to running PCA, we preprocess the data by normalizing each feature to have mean 0 and variance 1<ul>
-<li>can be ommmitted if we know different features are on the same scale (e.g. pixels in a grayscale img)</li>
+<li>low accuracy compared to other methods</li>
+<li>Cannot deal with additive structure (e,g. diagonal line separating classes)</li>
 </ul>
-</li>
-<li>Want to compute the <em>major axis of variation</em> (i.e. the direction on which the data approximately lies)<ul>
-<li>find the direction of maximum variance</li>
-</ul>
-</li>
-<li>For a given unit vector <script type="math/tex">u</script> and a point <script type="math/tex">x</script>, the length of the porjection of <script type="math/tex">x</script> onto. <script type="math/tex">u</script> Is given by their dot product (e.g. <script type="math/tex">x^T u</script>).<ul>
-<li>
-<script type="math/tex; mode=display">\textit{proj}_u(x)</script>
-</li>
-<li>if <script type="math/tex">x</script> is a point in our dataset, then <script type="math/tex">x^Tu</script> is a distance from the origin</li>
-</ul>
-</li>
-<li>we want to maximize:</li>
-</ul>
-<p>
-<script type="math/tex; mode=display">\begin{align}\frac{1}{n} \sum_{i=1}^n (x^T u)^2 &= \frac{1}{n}\sum_{i=1}^n (x^T u)^T (x^T u) \\ &= \frac{1}{n}\sum_{i=1}^n u^T x x^T u \\ &= u^T (\frac{ 1}{n} \sum_{i=1}^n x x^T)u \\ &= u^T \Sigma u \end{align}</script>
-</p>
+<h1 id="ensemble-methods">Ensemble Methods</h1>
 <ul>
-<li>subject to <script type="math/tex">u^T u = 1</script> (e.g. <script type="math/tex">||u||_2 = 1</script>)<ul>
-<li>gaurantees all basis vectors are orthogonal</li>
+<li>
+<p>Used to improve the accuracy of predictions, especially with decision trees</p>
+</li>
+<li>
+<p>Training different types of algorithms and then averaging their results</p>
+</li>
+<li>Training on multiple train sets from the population and then averaging their results</li>
+<li>Bagging (random forrests)</li>
+<li>
+<p>Boosting (Adaboost, Xgboost)</p>
+</li>
+<li>
+<p>Bagging and boosting are most popular ensemble methods since the other two either require collecting more data (oftentimes infeasible) or using more algorithms</p>
+</li>
 </ul>
-</li>
-<li>Def of variance: <script type="math/tex">\frac{ 1}{n} \sum_{i=1}^n x x^T = \sigma^2</script>
-</li>
-<li>We can define the lagragian of this optimization problem as </li>
-<li>
-<script type="math/tex; mode=display">\mathcal{L}(u, \lambda) = u^T \Sigma u - \lambda (u^T u - 1)</script>
-</li>
-<li>
-<script type="math/tex">\Sigma \in \mathbb{R}^{n \times n}</script>, <script type="math/tex">u \in \mathbb{R}^n</script>
-</li>
-<li>
-<script type="math/tex; mode=display">\nabla_u \mathcal{L}( \cdot) = \Sigma u - \lambda u = 0</script> yields <script type="math/tex">\Sigma u = \lambda u</script>
+<h2 id="bagging">Bagging</h2>
+<h2 id="boosting">Boosting</h2>
 <ul>
-<li>n solutions every time</li>
-<li>eigenvalues are the solutions <script type="math/tex">\lambda_1, \cdots, \lambda_n</script> to <script type="math/tex">\det (\lambda - \Sigma) = 0</script>
-</li>
+<li>Decreasing bias</li>
+<li>Additive</li>
 </ul>
-</li>
-<li>principal eigenvector take the largest <script type="math/tex">|\lambda_i|</script> and find <script type="math/tex">u_1</script> s.t. <script type="math/tex">\Sigma u_1 = \lambda_1 u_1</script>
-<ul>
-<li>repeat to find the 2nd, 3rd, etc. principal eigenvectors</li>
-</ul>
-</li>
-<li>
-<script type="math/tex">z</script> is the new data poiint in reduced space:<ul>
-<li>
-<script type="math/tex">z = (x^T u_1, \cdots, x^T u_k)^T</script> where $k &lt;&lt; n</li>
-<li>to cast z back to original space <script type="math/tex">x_{approx} = (z_1 u_1) + \cdots + z_k u_k = </script> u_k z where each <script type="math/tex">u_i \in \mathbb{R}^n</script>
-</li>
-</ul>
-</li>
-</ul></div>
+<p><a href="https://www.youtube.com/watch?v=wr9gUr-eWdA&amp;list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU&amp;index=10">CS 229 Lecture</a></p></div>
             </div>
         </div>
 

@@ -85,6 +85,10 @@
 </li>
                                     
 <li>
+    <a href="../dts/" class="dropdown-item">Decision Trees</a>
+</li>
+                                    
+<li>
     <a href="../reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
 </li>
                                 </ul>
@@ -92,6 +96,10 @@
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Neural Networks <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../nn/overview/" class="dropdown-item">Overview</a>
+</li>
                                     
 <li>
     <a href="../nn/activation_functions/" class="dropdown-item">Activation Functions</a>
@@ -187,11 +195,15 @@
             
             <li class="nav-item" data-level="1"><a href="#classification" class="nav-link">Classification</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#perceptron" class="nav-link">Perceptron</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#logistic-regression" class="nav-link">Logistic Regression</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#softmaxmultinomial-logistic-regression" class="nav-link">Softmax/Multinomial Logistic Regression</a>
+            <li class="nav-item" data-level="2"><a href="#softmax-regression" class="nav-link">Softmax Regression</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -219,11 +231,102 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="classification">Classification</h1>
-<h2 id="logistic-regression">Logistic Regression</h2>
-<h2 id="softmaxmultinomial-logistic-regression">Softmax/Multinomial Logistic Regression</h2>
+<h2 id="perceptron">Perceptron</h2>
 <ul>
+<li>Very early learning algorithm that performs simple linear classification between two classes<ul>
+<li>Never converges if training data is not linearly separable </li>
+</ul>
+</li>
+<li>
+<script type="math/tex">z = w^Tx + b</script>
+</li>
+<li>
+<script type="math/tex">g(z) = <script type="math/tex; mode=display">\begin{cases}1 & z \geq 0 \\ 0 & z < 0\end{cases}</script>
+</script>
+</li>
+<li>Update rule:<ul>
+<li>
+<script type="math/tex">\theta_j := \theta_j + \alpha (y^{(i)} - h_\theta(x^{(i)})x_j^{(i)}</script>
+</li>
+</ul>
+</li>
+<li>Its predictions do not have meaningful probabilistic interpretations</li>
+<li>Cannot be derived as a maximum likelihood estimation algorithm</li>
+<li>Forms the basis for multilayer perceptrons (neural networks)<ul>
+<li>Backpropagation is used to train</li>
+<li>Nonlinear activitaion functions that are part of the network need to be differentiable</li>
+</ul>
+</li>
+<li><a href="https://www.cs.utexas.edu/~gdurrett/courses/sp2021/perc-lr-connections.pdf">Perceptron vs Logistic Regression</a></li>
+</ul>
+<h2 id="logistic-regression">Logistic Regression</h2>
+<ul>
+<li>Fisher Scoring- when the log likelihood function is optimizied using multi-dimensional Newton's method<ul>
+<li>
+<script type="math/tex">\theta := \theta - H^{-1} \nabla_\theta \ell(\theta)</script>
+</li>
+<li>
+<script type="math/tex">H_{ij} = \frac{\partial^2 \ell(\theta)}{\partial \theta_i \partial \theta_j}</script>
+</li>
+<li>Faster convergence than batch gradient descent but one iteration can be more expensive due to finding and inverting hessian<ul>
+<li>If number of params is small, and therefore hessian is small, then it is usually much faster overall</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://cs229.stanford.edu/notes2021fall/cs229-notes1.pdf">CS 229 Notes</a></li>
+</ul>
+<h2 id="softmax-regression">Softmax Regression</h2>
+<ul>
+<li>aka Multinomial Logistic Regression</li>
+<li>
+<p>Generalization of logistic regression to <script type="math/tex">C</script> classes </p>
+<ul>
+<li>If <script type="math/tex">C = 2</script> then softmax reduces to binary logistic regression</li>
+</ul>
+</li>
+<li>
+<p>Creates linear decision boundaries between classes</p>
+<ul>
+<li>Adding hidden layers with nonlinear activation functions is what allows NNs to learn nonlinear decision boundaries</li>
+</ul>
+</li>
+<li>
+<p>Applies the softmax activation function to a vector of real numbers to produce a vector of probabilities</p>
+<ul>
+<li>
+<script type="math/tex">S(x) = \frac{e^x}{\sum_{i =1}^C e^{x_i}}</script>
+</li>
+<li>
+<script type="math/tex">S: \mathbb{R}^n \to \mathbb{R}^n</script>
+</li>
+<li>The sum of the output probabilites = 1</li>
+<li>Applies the exponetial elementwise to a vector </li>
+<li>Temperature parameter <script type="math/tex">t</script> is a scalar that <script type="math/tex">x</script> is multiplied by before being passed to the softmax activation<ul>
+<li>
+<script type="math/tex">0 < t < 1</script> moves the probabilities closer together</li>
+<li>
+<script type="math/tex">t > 1</script> moves the probabilites further apart</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Uses cross entropy loss to train <script type="math/tex">\mathcal{L}(y, \hat y) = - \sum_{j=1}^C y_j \log \hat y_j</script>
+</p>
+<ul>
+<li>assumes target <script type="math/tex">y</script> uses one-hot encoding (e.g. <script type="math/tex">y^{(i)} = (0, 0, 1, 0)^T</script>)</li>
+<li>In order to minimize <script type="math/tex">-\log \hat y</script> we need to make <script type="math/tex">\hat y >> 0</script>
+</li>
+</ul>
+</li>
+<li>
+<p>
+<script type="math/tex">J(\theta) = \frac{1}{m} \sum_{i=1}^m \mathcal{L}(y^{(i)}, \hat y^{(i)})</script>
+</p>
+</li>
 <li><a href="http://deeplearning.stanford.edu/tutorial/supervised/SoftmaxRegression/">Stanford UFLDL</a></li>
-<li>Learn after exam</li>
+<li><a href="https://www.youtube.com/watch?v=LLux1SW--oM">DeepLearningAI Video on Softmax Regression</a></li>
 </ul>
 <h2 id="gaussian-discriminant-analysis">Gaussian Discriminant Analysis</h2>
 <h2 id="naive-bayes">Naive Bayes</h2>

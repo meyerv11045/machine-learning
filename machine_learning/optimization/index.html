@@ -85,6 +85,10 @@
 </li>
                                     
 <li>
+    <a href="../dts/" class="dropdown-item">Decision Trees</a>
+</li>
+                                    
+<li>
     <a href="../reinforcement_learning/" class="dropdown-item">Reinforcement Learning</a>
 </li>
                                 </ul>
@@ -92,6 +96,10 @@
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Neural Networks <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../nn/overview/" class="dropdown-item">Overview</a>
+</li>
                                     
 <li>
     <a href="../nn/activation_functions/" class="dropdown-item">Activation Functions</a>
@@ -195,6 +203,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#advanced-techniques" class="nav-link">Advanced Techniques</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -205,8 +217,12 @@
 <h1 id="optimization-techniques">Optimization Techniques</h1>
 <h2 id="gradient-descent">Gradient Descent</h2>
 <ul>
-<li>Optimization technique</li>
-<li><strong>Stochastic</strong>: cost function for single datapoint before doing a model parameter update<ul>
+<li>
+<p>Optimization technique (aka steepest descent)</p>
+</li>
+<li>
+<p><strong>Stochastic</strong>: cost function for single datapoint before doing a model parameter update</p>
+<ul>
 <li>take step for each datapoint in dataset </li>
 <li>may get closer to minimum faster than batch but might never converge and just keep oscillating around the minmum (usually approximations of the minimum are good enough)<ul>
 <li>adaptive learning rate that decreases over time will ensure params converge and dont oscillate around the min</li>
@@ -215,15 +231,53 @@
 <li>preferred when the training set is large</li>
 </ul>
 </li>
-<li><strong>Batch</strong>: cost function over the entire dataset before doing a model parameter update<ul>
+<li>
+<p><strong>Batch</strong>: cost function over the entire dataset before doing a model parameter update</p>
+<ul>
 <li>scan entire dataset before taking step</li>
 </ul>
 </li>
-<li>For convex cost functions, gradient descent always converges to the global minimum assuming learning rate is not too large</li>
+<li>
+<p>For convex cost functions, gradient descent always converges to the global minimum assuming learning rate is not too large</p>
+<ul>
+<li><a href="https://thedatamint.github.io/Proving%20Convexity%20of%20Mean%20Squared%20Error%20Loss%20in%20a%20Regression%20Setting..html">MSE Cost is Convex Proof</a></li>
+</ul>
+</li>
+<li>
+<p>Momentum- takes average of previous gradients into account</p>
+<ul>
+<li>
+<p>this results in less zigzagged trajectory throught the parameter space over the cost function</p>
+</li>
+<li>
+<p>reduces changes in directions that are not useful in moving towards the min since previous gradients will all share a common direction towards the minimizer while less useful directions will tend to cancel, thus we want to generally follow the most followed direction of previous gradients</p>
+</li>
+<li>
+<p>we don't update parameters directly, instead we update the velocity vector</p>
+<ul>
+<li>very low memory (store 1 previous gradient which encapsulates the effect of gradients before it) and low computational cost but greatly helps convergence</li>
+</ul>
+</li>
+<li>
+<p><code>v = Bv + (1 - B) gradient_w
+    w = w - alpha * v</code></p>
+</li>
+</ul>
+</li>
 </ul>
 <h2 id="coordinate-descent">Coordinate Descent</h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Coordinate_descent">Wiki</a></li>
+</ul>
+<h2 id="advanced-techniques">Advanced Techniques</h2>
+<ul>
+<li>Conjugate Gradient</li>
+<li>BFGS- iterative method for solving unconstrained nonlinear optimization problems<ul>
+<li>determines descent direction by preconditioning gradient w/ curvature information</li>
+<li>curvature from a gradually improved <em>approximation</em> of the hessian of the loss function (obtained from gradient evalations via a secant method</li>
+</ul>
+</li>
+<li>L-BFGS</li>
 </ul></div>
             </div>
         </div>
