@@ -1,11 +1,54 @@
 # Classification
 
+## Perceptron
+
+- Very early learning algorithm that performs simple linear classification between two classes
+    - Never converges if training data is not linearly separable 
+- $z = w^Tx + b$ 
+- $g(z) = \begin{cases}1 & z \geq 0 \\ 0 & z < 0\end{cases}$
+- Update rule:
+    - $\theta_j := \theta_j + \alpha (y^{(i)} - h_\theta(x^{(i)})x_j^{(i)}$
+- Its predictions do not have meaningful probabilistic interpretations
+- Cannot be derived as a maximum likelihood estimation algorithm
+- Forms the basis for multilayer perceptrons (neural networks)
+    - Backpropagation is used to train
+    - Nonlinear activitaion functions that are part of the network need to be differentiable
+- [Perceptron vs Logistic Regression](https://www.cs.utexas.edu/~gdurrett/courses/sp2021/perc-lr-connections.pdf)
+
 ## Logistic Regression
 
-## Softmax/Multinomial Logistic Regression
+- Fisher Scoring- when the log likelihood function is optimizied using multi-dimensional Newton's method
+    - $\theta := \theta - H^{-1} \nabla_\theta \ell(\theta)$
+    - $H_{ij} = \frac{\partial^2 \ell(\theta)}{\partial \theta_i \partial \theta_j}$
+    - Faster convergence than batch gradient descent but one iteration can be more expensive due to finding and inverting hessian
+        - If number of params is small, and therefore hessian is small, then it is usually much faster overall
+- [CS 229 Notes](https://cs229.stanford.edu/notes2021fall/cs229-notes1.pdf)
 
+## Softmax Regression
+
+- aka Multinomial Logistic Regression
+- Generalization of logistic regression to $C$ classes 
+    - If $C = 2$ then softmax reduces to binary logistic regression
+
+- Creates linear decision boundaries between classes
+    - Adding hidden layers with nonlinear activation functions is what allows NNs to learn nonlinear decision boundaries
+
+- Applies the softmax activation function to a vector of real numbers to produce a vector of probabilities
+    - $S(x) = \frac{e^x}{\sum_{i =1}^C e^{x_i}}$
+    - $S: \mathbb{R}^n \to \mathbb{R}^n$
+    - The sum of the output probabilites = 1
+    - Applies the exponetial elementwise to a vector 
+    - Temperature parameter $t$ is a scalar that $x$ is multiplied by before being passed to the softmax activation
+        - $0 < t < 1$ moves the probabilities closer together
+        - $t > 1$ moves the probabilites further apart
+
+- Uses cross entropy loss to train $\mathcal{L}(y, \hat y) = - \sum_{j=1}^C y_j \log \hat y_j$
+    - assumes target $y$ uses one-hot encoding (e.g. $y^{(i)} = (0, 0, 1, 0)^T$)
+    - In order to minimize $-\log \hat y$ we need to make $\hat y >> 0$ 
+
+- $J(\theta) = \frac{1}{m} \sum_{i=1}^m \mathcal{L}(y^{(i)}, \hat y^{(i)})$
 - [Stanford UFLDL](http://deeplearning.stanford.edu/tutorial/supervised/SoftmaxRegression/)
-- Learn after exam
+- [DeepLearningAI Video on Softmax Regression](https://www.youtube.com/watch?v=LLux1SW--oM)
 
 ## Gaussian Discriminant Analysis
 

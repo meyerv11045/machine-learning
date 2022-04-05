@@ -23,3 +23,9 @@
 - k-means performs coordinate descent on $J$
 - $J$ is nonconvex so might get trapped in local min
     - can run k-means multiple times with different intializations to escape local mins 
+
+
+
+## hierarchical
+
+- 

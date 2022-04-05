@@ -15,8 +15,8 @@
   - Allow sacking of multiple hidden layers unlike linear activation functions
   - Most all processes can be modeled by a neural network w/ nonlinear activation functions
 
-## Why do we need activation functions?
-Matrix multiplication and vector addition are simply linear transformations so in order to learn any nonlinear representations of data, we need to introduce a non-linear function or else the most complex classification boundary it can learn will be linear (e.g. line, plane, etc. ) which isn't that useful for interesting problems.
+## Why do we need nonlinear activation functions?
+Matrix multiplication and vector addition are simply linear transformations so in order to learn any nonlinear representations of data, we need to introduce a non-linear function or else the most complex classification boundary it can learn will be linear (e.g. line, plane, etc. ) which isn't that useful for interesting problems. If the activation function was linear (e.g. identity function), then the network would essentially just be a linear regression.
 
 In order to introduce non-linearity (otherwise matrix ops will result in only linear transformations), we apply non-linear activation functions pointwise to the results of the linear transformations at each layer.
 
@@ -28,13 +28,19 @@ $\dfrac{d}{dx}\sigma(x) = \sigma(x)(1 - \sigma(x))$
 Pros: 
 
 - *Smooth Gradient* prevents jumps in the output values
-- *Output vaues bound* btw 0 and 1, normalizing the each neuron's output
+- *Output vaues bound* btw 0 and 1, normalizing the each neuron's output 
+    - can be interpreted as a probability
+
 - *Clear predictions*- any values above 2 or below -2 are very close to the edge of the curve 
 
 Cons:
 
 - Vanishing Gradient- almost no change in the prediction for very high and very low input values
+  - Very large input values to sigmoid function result in a tiny gradient since we are at a nearly flat point of the function
+  - This makes it hard to update the parameters earlier in the network
   - Can result in the network refusing to learn further or being too slow to reach an accurate prediction
+  - Works well in linear regime but work poorly in the saturating regimes
+  
 - *Outputs not zero centered*
 - *Computationally expensive*
 
@@ -44,18 +50,23 @@ Detailed Derivation:
 
 $$ \begin{align}\dfrac{d}{dx} \sigma(x) &= \dfrac{d}{dx} \left[ \dfrac{1}{1 + e^{-x}} \right] \\ &= \dfrac{d}{dx} \left( 1 + \mathrm{e}^{-x} \right)^{-1} \\ &= -(1 + e^{-x})^{-2}(-e^{-x}) \\ &= \dfrac{e^{-x}}{\left(1 + e^{-x}\right)^2} \\ &= \dfrac{1}{1 + e^{-x}\ } \cdot \dfrac{e^{-x}}{1 + e^{-x}}  \\ &= \dfrac{1}{1 + e^{-x}\ } \cdot \dfrac{(1 + e^{-x}) - 1}{1 + e^{-x}}  \\ &= \dfrac{1}{1 + e^{-x}\ } \cdot \left( \dfrac{1 + e^{-x}}{1 + e^{-x}} - \dfrac{1}{1 + e^{-x}} \right) \\ &= \dfrac{1}{1 + e^{-x}\ } \cdot \left( 1 - \dfrac{1}{1 + e^{-x}} \right) \\ &= \sigma(x) \cdot (1 - \sigma(x)) \end{align} $$
 
----
+## TanH (Hyperbolic Tangent)
 
-## TanH/ Hyperbolic Tangent
-Similar in advantages and disadvantages except it has the advantage of being *zero centered*, making it easier to models input that have strongly negative, neutral, and strongly positive values
+$$\text{tanh}(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}$$
 
+$$\text{tanh}'(z) = 1 - \text{tanh}(z)^2$$
 
+Similar in advantages and disadvantages to sigmoid except it has the advantage of being *zero centered* (i.e. output range is $[-1, 1]$), making it easier to models input that have strongly negative, neutral, and strongly positive values (e.g. reward for deep RL model)
 
 ## ReLU (Rectified Linear Unit)
+$$\text{ReLU}(z) = \begin{cases}z & \text{if } z \geq 0 \\ 0 & \text{if } z < 0\end{cases}$$
+
+$$\text{ReLU}'(z) = \begin{cases}1 & \text{if } z \geq 0 \\ 0 & \text{if } z < 0\end{cases}$$
+
 Pros: 
 
 - *Computationally efficient*- allows the network to converge quickly 
-- *Non-linear*- although it seems lik e a lienar function, its derivative allows for backpropagation
+- *Non-linear*- although it seems like a lienar function, its derivative allows for backpropagation
 
 Cons:
 

@@ -22,9 +22,11 @@ nav:
     - 'Model Selection': 'machine_learning/model_selection.md'
     - 'Regularization': 'machine_learning/regularization.md'
     - 'PCA': 'machine_learning/pca.md'
-    - 'SVMs': 'machine_learning/svms.md' 
+    - 'SVMs': 'machine_learning/svms.md'
+    - 'Decision Trees': 'machine_learning/dts.md' 
     - 'Reinforcement Learning': 'machine_learning/reinforcement_learning.md'
   - Neural Networks:
+    - 'Overview': 'machine_learning/nn/overview.md'
     - 'Activation Functions': 'machine_learning/nn/activation_functions.md'
     - 'PyTorch': 'machine_learning/nn/pytorch.md'
     - 'AutoEncoders': 'machine_learning/nn/auto_encoders.md'  
