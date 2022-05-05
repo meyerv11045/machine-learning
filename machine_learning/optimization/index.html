@@ -116,6 +116,10 @@
 <li>
     <a href="../nn/ssl/" class="dropdown-item">Self-Supervised Learning</a>
 </li>
+                                    
+<li>
+    <a href="../nn/embeddings/" class="dropdown-item">Embeddings</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -154,6 +158,19 @@
                                     
 <li>
     <a href="../../optimization/mpc/" class="dropdown-item">Model Predictive Control</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Math <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../math/math/" class="dropdown-item">Important Ideas</a>
+</li>
+                                    
+<li>
+    <a href="../../math/factorization/" class="dropdown-item">Matrix Factorization</a>
 </li>
                                 </ul>
                             </li>
@@ -264,6 +281,19 @@
 </li>
 </ul>
 </li>
+<li>
+<p>Gradient Ascent- maximization of a concave function (e.g. maximizing distance btw separation hyperplan and observations)</p>
+<ul>
+<li>
+<script type="math/tex">w_{n+1} = w_n + \alpha \nabla_w f(w)</script>
+</li>
+<li>can apply gradient ascent on <script type="math/tex">-f</script> to get equivalent solution to gradient descent on <script type="math/tex">f</script>
+</li>
+<li>using positive log-likelihood: objective function is concave therefore we use gradient ascent</li>
+<li>using negative log-likelihood: objective function is convex therefore we use gradient descent</li>
+<li><a href="https://www.baeldung.com/cs/gradient-descent-vs-ascent">GD Ascent</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="coordinate-descent">Coordinate Descent</h2>
 <ul>
@@ -277,7 +307,7 @@
 <li>curvature from a gradually improved <em>approximation</em> of the hessian of the loss function (obtained from gradient evalations via a secant method</li>
 </ul>
 </li>
-<li>L-BFGS</li>
+<li>L-BFGS (limited memory version of BFGS)</li>
 </ul></div>
             </div>
         </div>

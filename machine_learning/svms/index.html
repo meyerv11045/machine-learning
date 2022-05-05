@@ -116,6 +116,10 @@
 <li>
     <a href="../nn/ssl/" class="dropdown-item">Self-Supervised Learning</a>
 </li>
+                                    
+<li>
+    <a href="../nn/embeddings/" class="dropdown-item">Embeddings</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -154,6 +158,19 @@
                                     
 <li>
     <a href="../../optimization/mpc/" class="dropdown-item">Model Predictive Control</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Math <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../math/math/" class="dropdown-item">Important Ideas</a>
+</li>
+                                    
+<li>
+    <a href="../../math/factorization/" class="dropdown-item">Matrix Factorization</a>
 </li>
                                 </ul>
                             </li>
@@ -207,6 +224,11 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#svms" class="nav-link">svms</a>
+              <ul class="nav flex-column">
               </ul>
             </li>
         </ul>
@@ -297,6 +319,34 @@
 </li>
 <li>
 <p><a href="https://www.youtube.com/watch?v=_PwhiWxHK8o">MIT Lecture (Great- builds up from basics!)</a></p>
+</li>
+</ul>
+<h1 id="svms">svms</h1>
+<ul>
+<li>want a decision boundary represented by a hyperplane </li>
+<li>for 2d, our hyperplane will be <script type="math/tex"><w,x> + b = 0</script> (<script type="math/tex">w</script> is the normal vector to the hyperplane and <script type="math/tex">b</script> is the bias so our hyperplanes don't have to pass through the origin)<ul>
+<li>thus the decision rule will be <script type="math/tex">h_w(z) = \text{sign}(<w,x> + b)</script>
+</li>
+</ul>
+</li>
+<li>many possible separating hyperplanes for a given labeled training dataset</li>
+<li>we want to find the hyperplan that generalzies the best to new data<ul>
+<li>we theorize the hyperplane that is as far away from any training point as possible is the one that generalizes best to the new data</li>
+</ul>
+</li>
+<li>we define the margin of a datapoint for a given hyperplane defined by <script type="math/tex">(w,b)</script> to be <script type="math/tex"><x , w></script> since <script type="math/tex">x</script>'s projection onto the normal of the hyperplane is simply its distance from the hyperplane</li>
+<li>the geometric margin of a hyperplane <script type="math/tex">(w,b)</script> wrt to a dataset <script type="math/tex">D</script> is the smallest distance from a training point <script type="math/tex">x_i</script> to the hyperplane</li>
+<li>linearizing the constrinats <ul>
+<li>we want <script type="math/tex">\text{sign}(<x_i, w> +b ) = \text{sign}(y_i)</script> so we can multiply them together (if the signs agree, result is positive, otherwise negative)</li>
+<li>so the constraint for each training point becomes <script type="math/tex">(<x_i, w> + b)y_i \geq 0</script>
+<ul>
+<li>linear constraint since <script type="math/tex">y_i</script> is a constant </li>
+<li>LHS is called the <em>functional margin</em></li>
+<li>sign of the inner product is independent of <script type="math/tex">w</script>'s scaling so it doesn't have to be a unit vector </li>
+<li></li>
+</ul>
+</li>
+</ul>
 </li>
 </ul></div>
             </div>

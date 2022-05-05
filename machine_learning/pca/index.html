@@ -116,6 +116,10 @@
 <li>
     <a href="../nn/ssl/" class="dropdown-item">Self-Supervised Learning</a>
 </li>
+                                    
+<li>
+    <a href="../nn/embeddings/" class="dropdown-item">Embeddings</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -154,6 +158,19 @@
                                     
 <li>
     <a href="../../optimization/mpc/" class="dropdown-item">Model Predictive Control</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Math <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../math/math/" class="dropdown-item">Important Ideas</a>
+</li>
+                                    
+<li>
+    <a href="../../math/factorization/" class="dropdown-item">Matrix Factorization</a>
 </li>
                                 </ul>
                             </li>
@@ -328,7 +345,9 @@
 <ol>
 <li>Calculate the covariance matrix <script type="math/tex">\Sigma</script> of the data </li>
 <li>Find the eigenvalues and corresponding eigenvectors of the covariance matrix</li>
-<li>Select the eigenvectors with the largest eigenvalues to be the basis of a smaller subspace to represent the data <ul>
+<li>
+<p>Select the eigenvectors with the largest eigenvalues to be the basis of a smaller subspace to represent the data </p>
+<ul>
 <li>Eigenvectors w/ largest eigenvalues represent the directions in which the most variance of the data is capture </li>
 <li>In order to accurately represent the data in lower dimensional space, we want to preserve as much of the original variance as possible</li>
 <li>Can select a new basis based on desired dimension of the subspace or based on how much variance you want preserved (e.g. 80%)<ul>
@@ -336,6 +355,9 @@
 </ul>
 </li>
 </ul>
+</li>
+<li>
+<p>sum of eigenvalues should equal the sum along the diagonal of the covariance matrix (sum of variability in dataset)</p>
 </li>
 </ol>
 <h2 id="svd-perspective">SVD Perspective</h2>
