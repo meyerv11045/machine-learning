@@ -31,6 +31,7 @@ nav:
     - 'PyTorch': 'machine_learning/nn/pytorch.md'
     - 'AutoEncoders': 'machine_learning/nn/auto_encoders.md'  
     - 'Self-Supervised Learning': 'machine_learning/nn/ssl.md'
+    - 'Embeddings': 'machine_learning/nn/embeddings.md'
   - Optimization:
     - 'Overview': 'optimization/overview.md'
     - 'Convergence': 'optimization/convergence.md'
@@ -40,3 +41,6 @@ nav:
       - 'Bisection': 'optimization/root-methods/bisection.md'
       - 'Regula Falsi': 'optimization/root-methods/regula_falsi.md'
     - 'Model Predictive Control': 'optimization/mpc.md'
+  - Math:
+    - 'Important Ideas': 'math/math.md'
+    - 'Matrix Factorization': 'math/factorization.md'

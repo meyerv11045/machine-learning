@@ -65,6 +65,8 @@
     - Can select a new basis based on desired dimension of the subspace or based on how much variance you want preserved (e.g. 80%)
         - sum of eigenvalues of current selected eigenvectors / sum of all eigenvalues = variance preserved in current subspace
 
+- sum of eigenvalues should equal the sum along the diagonal of the covariance matrix (sum of variability in dataset)
+
 ## SVD Perspective
 
 - Statistical Interpretation of SVD

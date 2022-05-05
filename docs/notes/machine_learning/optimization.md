@@ -31,7 +31,14 @@
         v = Bv + (1 - B) gradient_w
         w = w - alpha * v
         ```
+    
+- Gradient Ascent- maximization of a concave function (e.g. maximizing distance btw separation hyperplan and observations)
 
+    - $w_{n+1} = w_n + \alpha \nabla_w f(w)$
+- can apply gradient ascent on $-f$ to get equivalent solution to gradient descent on $f$
+    - using positive log-likelihood: objective function is concave therefore we use gradient ascent
+- using negative log-likelihood: objective function is convex therefore we use gradient descent
+    - [GD Ascent](https://www.baeldung.com/cs/gradient-descent-vs-ascent)
 
 
 ## Coordinate Descent
@@ -44,4 +51,4 @@
 - BFGS- iterative method for solving unconstrained nonlinear optimization problems
     - determines descent direction by preconditioning gradient w/ curvature information
     - curvature from a gradually improved *approximation* of the hessian of the loss function (obtained from gradient evalations via a secant method
-- L-BFGS
+- L-BFGS (limited memory version of BFGS)

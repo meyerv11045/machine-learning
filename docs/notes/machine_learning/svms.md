@@ -61,8 +61,6 @@ where $\gamma = \frac{1}{2\sigma^2}$ is a parameter of the kernel that controls 
     - Using the kernel trick allowsus to leverage the advantages of the feature mapping without the computational costs of computing the mapping for each datapoint
     - The cost function is convex so it guarantees the existance of a global extremum
 
-
-
 ### Resources
 
 - [AI Master Kernel SVM](https://ai-master.gitbooks.io/kernel-svm/content/)
@@ -70,3 +68,25 @@ where $\gamma = \frac{1}{2\sigma^2}$ is a parameter of the kernel that controls 
 - [MIT Lecture (Great- builds up from basics!)](https://www.youtube.com/watch?v=_PwhiWxHK8o)
 
     
+
+
+
+
+
+# svms
+
+- want a decision boundary represented by a hyperplane 
+- for 2d, our hyperplane will be $<w,x> + b = 0$ ($w$ is the normal vector to the hyperplane and $b$ is the bias so our hyperplanes don't have to pass through the origin)
+    - thus the decision rule will be $h_w(z) = \text{sign}(<w,x> + b)$
+- many possible separating hyperplanes for a given labeled training dataset
+- we want to find the hyperplan that generalzies the best to new data
+    - we theorize the hyperplane that is as far away from any training point as possible is the one that generalizes best to the new data
+- we define the margin of a datapoint for a given hyperplane defined by $(w,b)$ to be $<x , w>$ since $x$'s projection onto the normal of the hyperplane is simply its distance from the hyperplane
+- the geometric margin of a hyperplane $(w,b)$ wrt to a dataset $D$ is the smallest distance from a training point $x_i$ to the hyperplane
+- linearizing the constrinats 
+    - we want $\text{sign}(<x_i, w> +b ) = \text{sign}(y_i)$ so we can multiply them together (if the signs agree, result is positive, otherwise negative)
+    - so the constraint for each training point becomes $(<x_i, w> + b)y_i \geq 0$
+        - linear constraint since $y_i$ is a constant 
+        - LHS is called the *functional margin*
+        - sign of the inner product is independent of $w$'s scaling so it doesn't have to be a unit vector 
+        - 
